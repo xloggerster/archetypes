@@ -7,7 +7,7 @@
 <!-- This file contains the default descriptor for web applications. -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <!-- The intent of this descriptor is to include jetty specific or common -->
-<!-- configuration for all ${artifactId}s. If a context has a webdefault.xml -->
+<!-- configuration for all webapps. If a context has a webdefault.xml -->
 <!-- descriptor, it is applied before the contexts own web.xml file -->
 <!-- -->
 <!-- A context may be assigned a default descriptor by: -->
@@ -30,7 +30,7 @@
 
 	<!-- ==================================================================== -->
 	<!-- Removes static references to beans from javax.el.BeanELResolver to -->
-	<!-- ensure ${artifactId} classloader can be released on undeploy -->
+	<!-- ensure webapp classloader can be released on undeploy -->
 	<!-- ==================================================================== -->
 	<listener>
 		<listener-class>org.eclipse.jetty.servlet.listener.ELContextCleaner</listener-class>
@@ -38,7 +38,7 @@
 
 	<!-- ==================================================================== -->
 	<!-- Removes static cache of Methods from java.beans.Introspector to -->
-	<!-- ensure ${artifactId} classloader can be released on undeploy -->
+	<!-- ensure webapp classloader can be released on undeploy -->
 	<!-- ==================================================================== -->
 	<listener>
 		<listener-class>org.eclipse.jetty.servlet.listener.IntrospectorCleaner</listener-class>

@@ -14,8 +14,8 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.eclipse.jetty.util.resource.FileResource;
 import org.eclipse.jetty.util.resource.Resource;
-import org.eclipse.jetty.${artifactId}.WebAppContext;
-import org.eclipse.jetty.${artifactId}.WebInfConfiguration;
+import org.eclipse.jetty.webapp.WebAppContext;
+import org.eclipse.jetty.webapp.WebInfConfiguration;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
