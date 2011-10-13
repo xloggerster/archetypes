@@ -6,8 +6,8 @@ import java.net.ServerSocket;
 
 import org.eclipse.jetty.plus.jndi.Resource;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.${artifactId}.Configuration;
-import org.eclipse.jetty.${artifactId}.WebAppContext;
+import org.eclipse.jetty.webapp.Configuration;
+import org.eclipse.jetty.webapp.WebAppContext;
 import org.h2.jdbcx.JdbcDataSource;
 
 public class StartJetty {
@@ -25,16 +25,16 @@ public class StartJetty {
 			return;
 		}
 
-		WebAppContext context = new WebAppContext("./src/main/${artifactId}", "/");
+		WebAppContext context = new WebAppContext("./src/main/webapp", "/");
 		context.setDefaultsDescriptor("./src/main/config/webdefault.xml");
 
 		context.setConfigurations(new Configuration[] { new MavenWebInfConfiguration(),
-				new org.eclipse.jetty.${artifactId}.WebXmlConfiguration(),
-				new org.eclipse.jetty.${artifactId}.MetaInfConfiguration(),
-				new org.eclipse.jetty.${artifactId}.FragmentConfiguration(),
-				new org.eclipse.jetty.plus.${artifactId}.EnvConfiguration(),
-				new org.eclipse.jetty.plus.${artifactId}.PlusConfiguration(),
-				new org.eclipse.jetty.${artifactId}.JettyWebXmlConfiguration() });
+				new org.eclipse.jetty.webapp.WebXmlConfiguration(),
+				new org.eclipse.jetty.webapp.MetaInfConfiguration(),
+				new org.eclipse.jetty.webapp.FragmentConfiguration(),
+				new org.eclipse.jetty.plus.webapp.EnvConfiguration(),
+				new org.eclipse.jetty.plus.webapp.PlusConfiguration(),
+				new org.eclipse.jetty.webapp.JettyWebXmlConfiguration() });
 
 		JdbcDataSource dataSource = new JdbcDataSource();
 		dataSource.setUser("sa");
