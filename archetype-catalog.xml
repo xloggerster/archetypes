@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><archetype-catalog>
+  <archetypes>
+    <archetype>
+      <groupId>ch.ralscha</groupId>
+      <artifactId>springjpa-archetype</artifactId>
+      <version>1.0.0</version>
+      <repository>http://ralscha.ch/archetypes</repository>
+      <description>Spring 3.1, JPA2, Spring-Data-Jpa, QueryDSL, Hibernate 3</description>
+    </archetype>
+	
+    <archetype>
+      <groupId>ch.ralscha</groupId>
+      <artifactId>springmvc-archetype</artifactId>
+      <version>1.0.0</version>
+      <repository>http://ralscha.ch/archetypes</repository>
+      <description>Simple Webapp with Spring MVC 3 and Spring Security</description>
+    </archetype>	
+	
+    <archetype>
+      <groupId>ch.ralscha</groupId>
+      <artifactId>webappsimple-archetype</artifactId>
+      <version>1.0.0</version>
+      <repository>http://ralscha.ch/archetypes</repository>
+      <description>Simple Webapplication with Servlet 3.0/JSP 2.2</description>
+    </archetype>		
+	
+    <archetype>
+      <groupId>ch.ralscha</groupId>
+      <artifactId>webapp-archetype</artifactId>
+      <version>1.0.0</version>
+      <repository>http://ralscha.ch/archetypes</repository>
+      <description>Webapp with Spring MVC 3, Spring 3.1, Spring Security, JPA2, Spring-Data-Jpa, QueryDSL, Hibernate 3</description>
+    </archetype>	
+
+    <archetype>
+      <groupId>ch.ralscha</groupId>
+      <artifactId>starter-archetype</artifactId>
+      <version>1.0.0</version>
+      <repository>http://ralscha.ch/archetypes</repository>
+      <description>Complete Webapp ExtJs,Spring,JPA</description>
+    </archetype>	
+
+  </archetypes>
+</archetype-catalog>
