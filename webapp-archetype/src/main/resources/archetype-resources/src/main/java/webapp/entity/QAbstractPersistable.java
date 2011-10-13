@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.${artifactId}.entity;
+package ${package}.webapp.entity;
 
 import javax.annotation.Generated;
 

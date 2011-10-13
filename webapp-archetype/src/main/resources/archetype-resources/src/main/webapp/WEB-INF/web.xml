@@ -14,7 +14,7 @@
 	<!-- Location of Java @Configuration classes that configure the components that makeup this application -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>${package}.${artifactId}.config</param-value>
+		<param-value>${package}.webapp.config</param-value>
 	</context-param>
 
 	<context-param>
