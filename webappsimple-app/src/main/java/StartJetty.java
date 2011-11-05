@@ -73,7 +73,7 @@ public class StartJetty {
 		private List<File> jars;
 
 		public MavenWebInfConfiguration() throws ParserConfigurationException, SAXException, IOException {
-			this(new ArrayList<Artifact>());
+			this(null);
 		}
 
 		public MavenWebInfConfiguration(List<Artifact> includeOnlyArtifacts) throws ParserConfigurationException,
@@ -133,12 +133,16 @@ public class StartJetty {
 		}
 
 		private boolean isIncluded(List<Artifact> includeOnlyArtifacts, String groupId, String artifactId) {
-			for (Artifact artifact : includeOnlyArtifacts) {
-				if (artifact.is(groupId, artifactId)) {
-					return true;
+			if (includeOnlyArtifacts != null) {			
+				for (Artifact artifact : includeOnlyArtifacts) {
+					if (artifact.is(groupId, artifactId)) {
+						return true;
+					}
 				}
+				return false;
 			}
-			return false;
+			
+			return true;
 		}
 
 		private String stripWhitespace(String orig) {
