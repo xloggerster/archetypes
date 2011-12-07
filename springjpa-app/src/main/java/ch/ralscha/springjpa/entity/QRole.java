@@ -28,7 +28,7 @@ public class QRole extends EntityPathBase<Role> {
         super(Role.class, forVariable(variable));
     }
 
-    public QRole(BeanPath<? extends Role> entity) {
+    public QRole(Path<? extends Role> entity) {
         super(entity.getType(), entity.getMetadata());
     }
 

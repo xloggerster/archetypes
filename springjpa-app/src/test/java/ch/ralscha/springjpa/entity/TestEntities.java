@@ -2,11 +2,12 @@ package ch.ralscha.springjpa.entity;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.codec.digest.DigestUtils;
+import org.jasypt.digest.StringDigester;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,11 @@ public class TestEntities {
 	@Autowired
 	private RoleRepository roleRepository;
 
+	@Autowired
+	private StringDigester passwordDigester;
+	
 	@Test
-	public void testuserDao() {
+	public void testUserDao() {
 		assertEquals(2, userRepository.findAll().size());
 
 		User adminUser = userRepository.findByUserName("admin");
@@ -43,7 +47,7 @@ public class TestEntities {
 		assertEquals("test@test.ch", adminUser.getEmail());
 		assertEquals("admin", adminUser.getFirstName());
 		assertEquals("admin", adminUser.getName());
-		assertEquals(DigestUtils.shaHex("admin"), adminUser.getPasswordHash());
+		assertTrue(passwordDigester.matches("admin", adminUser.getPasswordHash()));
 		assertEquals(true, adminUser.isEnabled());
 		assertEquals("en_US", adminUser.getLocale());
 		assertNotNull(adminUser.getCreateDate());
@@ -54,19 +58,20 @@ public class TestEntities {
 		assertEquals("user@test.ch", normalUser.getEmail());
 		assertEquals("user", normalUser.getFirstName());
 		assertEquals("user", normalUser.getName());
-		assertEquals(DigestUtils.shaHex("user"), normalUser.getPasswordHash());
+		assertTrue(passwordDigester.matches("user", normalUser.getPasswordHash()));
 		assertEquals(true, normalUser.isEnabled());
 		assertEquals("de_CH", normalUser.getLocale());
 		assertNotNull(normalUser.getCreateDate());
 	}
 
+	@Test
 	public void testUserCrud() {
 		User newUser = new User();
 		newUser.setUserName("new");
 		newUser.setEmail("new@new.ch");
 		newUser.setFirstName("newfirst");
 		newUser.setName("new");
-		newUser.setPasswordHash(DigestUtils.shaHex("new"));
+		newUser.setPasswordHash(passwordDigester.digest("new"));
 		newUser.setEnabled(false);
 		newUser.setLocale("new");
 		newUser.setCreateDate(new Date());
@@ -81,7 +86,7 @@ public class TestEntities {
 		assertEquals("new@new.ch", newUser.getEmail());
 		assertEquals("newfirst", newUser.getFirstName());
 		assertEquals("new", newUser.getName());
-		assertEquals(DigestUtils.shaHex("new"), newUser.getPasswordHash());
+		assertTrue(passwordDigester.matches("new", newUser.getPasswordHash()));
 		assertEquals(false, newUser.isEnabled());
 		assertEquals("new", newUser.getLocale());
 		assertNotNull(newUser.getCreateDate());
@@ -94,7 +99,7 @@ public class TestEntities {
 	}
 
 	@Test
-	public void testroleDao() {
+	public void testRoleDao() {
 		assertEquals(2, roleRepository.findAll().size());
 
 		Role adminRole = roleRepository.findByName("ROLE_ADMIN");

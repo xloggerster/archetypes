@@ -2,9 +2,10 @@ package ch.ralscha.springjpa.config;
 
 import java.util.Map;
 
+import org.jasypt.digest.StandardStringDigester;
+import org.jasypt.digest.StringDigester;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -17,7 +18,7 @@ import com.google.common.collect.Maps;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = { "ch.ralscha.springjpa" }, excludeFilters = { @Filter(Configuration.class) })
+@ComponentScan(basePackages = { "ch.ralscha.springjpa" })
 @ImportResource("classpath:ch/ralscha/springjpa/config/data.xml")
 public class DataConfig {
 
@@ -51,6 +52,15 @@ public class DataConfig {
 	@Bean
 	public TransactionTemplate transactionTemplate() {
 		return new TransactionTemplate(transactionManager());
+	}
+	
+	@Bean
+	public StringDigester passwordDigester() {
+		StandardStringDigester digester = new StandardStringDigester();
+		digester.setAlgorithm("SHA-256");
+		digester.setIterations(100000);
+		digester.setSaltSizeBytes(16);
+		return digester;
 	}
 
 }

@@ -41,7 +41,7 @@ public class User extends AbstractPersistable<Long> {
 	@NotNull
 	private String email;
 
-	@Length(max = 40)
+	@Length(max = 64)
 	private String passwordHash;
 
 	@Length(max = 255)

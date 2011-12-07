@@ -17,7 +17,7 @@ public class QAbstractPersistable extends EntityPathBase<AbstractPersistable<? e
 
     public final SimplePath<java.io.Serializable> id = createSimple("id", java.io.Serializable.class);
 
-    public QAbstractPersistable(BeanPath<? extends AbstractPersistable<? extends java.io.Serializable>> entity) {
+    public QAbstractPersistable(Path<? extends AbstractPersistable<? extends java.io.Serializable>> entity) {
         super(entity.getType(), entity.getMetadata());
     }
 

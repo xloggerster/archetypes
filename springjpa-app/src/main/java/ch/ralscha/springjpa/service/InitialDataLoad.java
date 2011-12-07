@@ -4,7 +4,7 @@ import java.util.Date;
 
 import javax.annotation.PostConstruct;
 
-import org.apache.commons.codec.digest.DigestUtils;
+import org.jasypt.digest.StringDigester;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
@@ -29,6 +29,9 @@ public class InitialDataLoad {
 
 	@Autowired
 	private TransactionTemplate transactionTemplate;
+
+	@Autowired
+	private StringDigester passwordDigester;
 
 	@PostConstruct
 	public void postConstruct() {
@@ -61,7 +64,7 @@ public class InitialDataLoad {
 			adminUser.setEmail("test@test.ch");
 			adminUser.setFirstName("admin");
 			adminUser.setName("admin");
-			adminUser.setPasswordHash(DigestUtils.shaHex("admin"));
+			adminUser.setPasswordHash(passwordDigester.digest("admin"));
 			adminUser.setEnabled(true);
 			adminUser.setLocale("en_US");
 			adminUser.setCreateDate(new Date());
@@ -82,7 +85,7 @@ public class InitialDataLoad {
 			normalUser.setEmail("user@test.ch");
 			normalUser.setFirstName("user");
 			normalUser.setName("user");
-			normalUser.setPasswordHash(DigestUtils.shaHex("user"));
+			normalUser.setPasswordHash(passwordDigester.digest("user"));
 			normalUser.setEnabled(true);
 			normalUser.setLocale("de_CH");
 			normalUser.setCreateDate(new Date());
