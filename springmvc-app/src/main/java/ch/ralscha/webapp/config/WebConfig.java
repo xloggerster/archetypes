@@ -3,9 +3,7 @@ package ch.ralscha.webapp.config;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
@@ -20,7 +18,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "ch.ralscha.webapp" }, excludeFilters=@Filter(type=FilterType.ANNOTATION, value=Configuration.class))
+@ComponentScan(basePackages = { "ch.ralscha.webapp" })
 @ImportResource("classpath:ch/ralscha/webapp/config/security.xml")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
@@ -49,7 +47,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		resolver.setCookieName("locale");
 		return resolver;
 	}
-	
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LocaleChangeInterceptor());
