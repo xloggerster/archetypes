@@ -8,6 +8,7 @@ import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 
 import ${package}.entity.User;
 
-public interface UserRepository extends JpaRepository<User, Long>, QueryDslPredicateExecutor<User>, UserRepositoryCustom {
+public interface UserRepository extends JpaRepository<User, Long>, QueryDslPredicateExecutor<User>,
+		UserRepositoryCustom {
 	User findByUserName(String userName);
 }

@@ -163,7 +163,8 @@ public class TestEntities {
 		users = userRepository.findAll(BooleanExpression.allOf(nameEqAdmin, firstNameEqAdmin, emailEqTest));
 		assertEquals(1, Lists.newArrayList(users).size());
 
-		users = userRepository.findAll(BooleanExpression.allOf(QUser.user.name.eq("xy"), firstNameEqAdmin, emailEqTest));
+		users = userRepository
+				.findAll(BooleanExpression.allOf(QUser.user.name.eq("xy"), firstNameEqAdmin, emailEqTest));
 		assertEquals(0, Lists.newArrayList(users).size());
 	}
 

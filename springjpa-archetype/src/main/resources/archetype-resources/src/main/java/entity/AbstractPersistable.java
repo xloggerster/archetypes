@@ -27,7 +27,6 @@ import javax.persistence.MappedSuperclass;
 
 import org.springframework.data.domain.Persistable;
 
-
 /**
  * Abstract base class for entities. Allows parameterization of id type, chooses
  * auto-generation and implements {@link ${symbol_pound}equals(Object)} and
@@ -37,15 +36,13 @@ import org.springframework.data.domain.Persistable;
  * @param <PK> the the of the entity
  */
 @MappedSuperclass
-public abstract class AbstractPersistable<PK extends Serializable> implements
-        Persistable<PK> {
+public abstract class AbstractPersistable<PK extends Serializable> implements Persistable<PK> {
 
     private static final long serialVersionUID = -5554308939380869754L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private PK id;
-
 
     /*
      * (non-Javadoc)
@@ -58,7 +55,6 @@ public abstract class AbstractPersistable<PK extends Serializable> implements
         return id;
     }
 
-
     /**
      * Sets the id of the entity.
      * 
@@ -68,7 +64,6 @@ public abstract class AbstractPersistable<PK extends Serializable> implements
 
         this.id = id;
     }
-
 
     /*
      * (non-Javadoc)
@@ -81,7 +76,6 @@ public abstract class AbstractPersistable<PK extends Serializable> implements
         return null == getId();
     }
 
-
     /*
      * (non-Javadoc)
      * 
@@ -90,10 +84,8 @@ public abstract class AbstractPersistable<PK extends Serializable> implements
     @Override
     public String toString() {
 
-        return String.format("Entity of type %s with id: %s", this.getClass()
-                .getName(), getId());
+		return String.format("Entity of type %s with id: %s", this.getClass().getName(), getId());
     }
-
 
     /*
      * (non-Javadoc)
@@ -119,7 +111,6 @@ public abstract class AbstractPersistable<PK extends Serializable> implements
 
         return null == this.getId() ? false : this.getId().equals(that.getId());
     }
-
 
     /*
      * (non-Javadoc)
