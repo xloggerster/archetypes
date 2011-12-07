@@ -1,11 +1,11 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.webapp;
+package ${package};
+
+import junit.framework.TestCase;
 
 import org.junit.Test;
-import ${package}.webapp.DemoBean;
-import junit.framework.TestCase;
 
 public class DemoBeanTest extends TestCase {
 
