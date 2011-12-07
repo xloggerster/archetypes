@@ -1,14 +1,12 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.webapp.config;
+package ${package}.config;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
@@ -23,8 +21,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "${package}.webapp" }, excludeFilters=@Filter(type=FilterType.ANNOTATION, value=Configuration.class))
-@ImportResource("classpath:${packageInPathFormat}/webapp/config/security.xml")
+@ComponentScan(basePackages = { "${package}" })
+@ImportResource("classpath:${packageInPathFormat}/config/security.xml")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Override
@@ -52,7 +50,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		resolver.setCookieName("locale");
 		return resolver;
 	}
-	
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LocaleChangeInterceptor());

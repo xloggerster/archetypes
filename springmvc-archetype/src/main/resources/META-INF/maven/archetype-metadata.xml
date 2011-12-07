@@ -10,16 +10,12 @@
         <include>**/*.xml</include>
       </includes>
       <excludes>
-        <exclude>Artifact.java</exclude>
-        <exclude>MavenWebInfConfiguration.java</exclude>
         <exclude>StartJetty.java</exclude>
       </excludes>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
       <directory>src/main/java</directory>
       <includes>
-        <include>Artifact.java</include>
-        <include>MavenWebInfConfiguration.java</include>
         <include>StartJetty.java</include>
       </includes>
     </fileSet>
