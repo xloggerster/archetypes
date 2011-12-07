@@ -3,6 +3,7 @@ package ch.ralscha.webapp.controller;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
