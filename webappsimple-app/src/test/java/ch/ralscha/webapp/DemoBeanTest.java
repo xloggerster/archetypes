@@ -1,8 +1,8 @@
 package ch.ralscha.webapp;
 
-import org.junit.Test;
-import ch.ralscha.webapp.DemoBean;
 import junit.framework.TestCase;
+
+import org.junit.Test;
 
 public class DemoBeanTest extends TestCase {
 
