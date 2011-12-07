@@ -1,6 +1,5 @@
 package ch.ralscha.springjpa.repository;
 
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import ch.ralscha.springjpa.entity.Role;

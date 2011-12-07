@@ -53,7 +53,7 @@ public class DataConfig {
 	public TransactionTemplate transactionTemplate() {
 		return new TransactionTemplate(transactionManager());
 	}
-	
+
 	@Bean
 	public StringDigester passwordDigester() {
 		StandardStringDigester digester = new StandardStringDigester();

@@ -25,7 +25,7 @@ import com.mysema.query.types.expr.BooleanExpression;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(defaultRollback = false)
-@ContextConfiguration(classes=DataConfig.class)
+@ContextConfiguration(classes = DataConfig.class)
 public class TestEntities {
 
 	@Autowired
@@ -36,7 +36,7 @@ public class TestEntities {
 
 	@Autowired
 	private StringDigester passwordDigester;
-	
+
 	@Test
 	public void testUserDao() {
 		assertEquals(2, userRepository.findAll().size());
@@ -150,17 +150,18 @@ public class TestEntities {
 		BooleanExpression nameEqAdmin = QUser.user.name.eq("admin");
 		BooleanExpression firstNameEqAdmin = QUser.user.firstName.eq("admin");
 		BooleanExpression emailEqTest = QUser.user.email.eq("test@test.ch");
-		
+
 		Iterable<User> users = userRepository.findAll(nameEqAdmin);
 		assertEquals(1, Lists.newArrayList(users).size());
-				
+
 		users = userRepository.findAll(nameEqAdmin.and(firstNameEqAdmin));
 		assertEquals(1, Lists.newArrayList(users).size());
 
 		users = userRepository.findAll(BooleanExpression.allOf(nameEqAdmin, firstNameEqAdmin, emailEqTest));
 		assertEquals(1, Lists.newArrayList(users).size());
 
-		users = userRepository.findAll(BooleanExpression.allOf(QUser.user.name.eq("xy"), firstNameEqAdmin, emailEqTest));
+		users = userRepository
+				.findAll(BooleanExpression.allOf(QUser.user.name.eq("xy"), firstNameEqAdmin, emailEqTest));
 		assertEquals(0, Lists.newArrayList(users).size());
 	}
 
