@@ -51,7 +51,7 @@ public class QUser extends EntityPathBase<User> {
         super(User.class, forVariable(variable));
     }
 
-    public QUser(BeanPath<? extends User> entity) {
+    public QUser(Path<? extends User> entity) {
         super(entity.getType(), entity.getMetadata());
     }
 
