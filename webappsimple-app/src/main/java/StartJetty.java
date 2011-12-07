@@ -50,7 +50,7 @@ public class StartJetty {
 		server.start();
 
 		System.out.println("Jetty Startup Time: " + (System.currentTimeMillis() - start) + " ms");
-		System.out.println("Jetty running on 8080");
+		System.out.println("Jetty running on " + port);
 	}
 
 	private static class Artifact {
@@ -133,7 +133,7 @@ public class StartJetty {
 		}
 
 		private boolean isIncluded(List<Artifact> includeOnlyArtifacts, String groupId, String artifactId) {
-			if (includeOnlyArtifacts != null) {			
+			if (includeOnlyArtifacts != null) {
 				for (Artifact artifact : includeOnlyArtifacts) {
 					if (artifact.is(groupId, artifactId)) {
 						return true;
@@ -141,7 +141,7 @@ public class StartJetty {
 				}
 				return false;
 			}
-			
+
 			return true;
 		}
 
