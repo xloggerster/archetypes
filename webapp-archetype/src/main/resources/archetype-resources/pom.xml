@@ -240,8 +240,8 @@
 
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-${rootArtifactId}</artifactId>
-			<version>${version}</version>
+			<artifactId>jetty-webapp</artifactId>
+			<version>${jetty.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
