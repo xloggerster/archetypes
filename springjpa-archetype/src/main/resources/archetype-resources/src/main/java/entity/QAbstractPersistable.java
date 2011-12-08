@@ -3,12 +3,12 @@
 #set( $symbol_escape = '\' )
 package ${package}.entity;
 
-
-import com.mysema.query.types.*;
-import com.mysema.query.types.path.*;
-
 import javax.annotation.Generated;
 
+import com.mysema.query.types.Path;
+import com.mysema.query.types.PathMetadata;
+import com.mysema.query.types.path.EntityPathBase;
+import com.mysema.query.types.path.SimplePath;
 
 /**
  * QAbstractPersistable is a Querydsl query type for AbstractPersistable
@@ -30,4 +30,3 @@ public class QAbstractPersistable extends EntityPathBase<AbstractPersistable<? e
     }
 
 }
-
