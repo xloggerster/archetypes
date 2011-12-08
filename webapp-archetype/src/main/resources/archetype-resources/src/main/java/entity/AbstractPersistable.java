@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ${package}.webapp.entity;
+package ${package}.entity;
 
 import java.io.Serializable;
 

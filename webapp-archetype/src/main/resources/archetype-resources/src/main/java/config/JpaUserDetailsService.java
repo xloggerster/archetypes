@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.webapp.config;
+package ${package}.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,8 +10,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import ${package}.webapp.entity.User;
-import ${package}.webapp.repository.UserRepository;
+import ${package}.entity.User;
+import ${package}.repository.UserRepository;
 
 @Component
 public class JpaUserDetailsService implements UserDetailsService {

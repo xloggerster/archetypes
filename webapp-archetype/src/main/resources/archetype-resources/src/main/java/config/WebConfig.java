@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.webapp.config;
+package ${package}.config;
 
 import java.util.Locale;
 
@@ -29,6 +29,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("index");
 		registry.addViewController("/index.html").setViewName("index");
+		registry.addViewController("/secure.html").setViewName("secure");
 	}
 
 	@Bean

@@ -1,14 +1,14 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.webapp.entity;
+package ${package}.entity;
 
 import static com.mysema.query.types.PathMetadataFactory.forVariable;
 
 import javax.annotation.Generated;
 
+import com.mysema.query.types.Path;
 import com.mysema.query.types.PathMetadata;
-import com.mysema.query.types.path.BeanPath;
 import com.mysema.query.types.path.EntityPathBase;
 import com.mysema.query.types.path.NumberPath;
 import com.mysema.query.types.path.StringPath;
@@ -19,7 +19,7 @@ import com.mysema.query.types.path.StringPath;
 @Generated("com.mysema.query.codegen.EntitySerializer")
 public class QRole extends EntityPathBase<Role> {
 
-	private static final long serialVersionUID = 1856413137;
+	private static final long serialVersionUID = -186037551;
 
 	public static final QRole role = new QRole("role");
 
@@ -33,7 +33,7 @@ public class QRole extends EntityPathBase<Role> {
 		super(Role.class, forVariable(variable));
 	}
 
-	public QRole(BeanPath<? extends Role> entity) {
+	public QRole(Path<? extends Role> entity) {
 		super(entity.getType(), entity.getMetadata());
 	}
 

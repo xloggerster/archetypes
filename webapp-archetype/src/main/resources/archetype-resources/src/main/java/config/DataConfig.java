@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.webapp.config;
+package ${package}.config;
 
 import java.util.Map;
 
@@ -26,7 +26,7 @@ import com.google.common.collect.Maps;
 
 @Configuration
 @EnableTransactionManagement
-@ImportResource("classpath:${packageInPathFormat}/webapp/config/data.xml")
+@ImportResource("classpath:${packageInPathFormat}/config/data.xml")
 public class DataConfig {
 
 	@Autowired
@@ -42,7 +42,7 @@ public class DataConfig {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		emf.setDataSource(dataSource());
 		emf.setPersistenceProvider(new org.hibernate.ejb.HibernatePersistence());
-		emf.setPackagesToScan("${package}.webapp.entity");
+		emf.setPackagesToScan("${package}.entity");
 
 		Map<String, String> properties = Maps.newHashMap();
 		//properties.put("hibernate.show_sql", "true");

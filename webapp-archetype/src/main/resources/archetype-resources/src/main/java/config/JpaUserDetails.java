@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.webapp.config;
+package ${package}.config;
 
 import java.util.Collection;
 import java.util.Locale;
@@ -11,8 +11,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.StringUtils;
 
-import ${package}.webapp.entity.Role;
-import ${package}.webapp.entity.User;
+import ${package}.entity.Role;
+import ${package}.entity.User;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableSet;

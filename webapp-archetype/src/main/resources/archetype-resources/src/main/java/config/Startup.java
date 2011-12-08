@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.webapp.config;
+package ${package}.config;
 
 import java.util.Date;
 
@@ -12,10 +12,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import ${package}.webapp.entity.Role;
-import ${package}.webapp.entity.User;
-import ${package}.webapp.repository.RoleRepository;
-import ${package}.webapp.repository.UserRepository;
+import ${package}.entity.Role;
+import ${package}.entity.User;
+import ${package}.repository.RoleRepository;
+import ${package}.repository.UserRepository;
 
 import com.google.common.collect.Sets;
 

@@ -103,7 +103,7 @@ public class StartJetty {
 				for (int i = 0; i < propertiesChildren.getLength(); i++) {
 					Node node = propertiesChildren.item(i);
 					if (node instanceof Element) {
-						properties.put("${" + node.getNodeName() + "}", stripWhitespace(node.getTextContent()));
+						properties.put("${symbol_dollar}{" + node.getNodeName() + "}", stripWhitespace(node.getTextContent()));
 					}
 				}
 			}
@@ -157,7 +157,7 @@ public class StartJetty {
 
 		private String stripWhitespace(String orig) {
 			if (orig != null) {
-				return orig.replace("\r", "").replace("\n", "").replace("\t", "").trim();
+				return orig.replace("${symbol_escape}r", "").replace("${symbol_escape}n", "").replace("${symbol_escape}t", "").trim();
 			}
 			return orig;
 		}

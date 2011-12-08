@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.webapp.entity;
+package ${package}.entity;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
