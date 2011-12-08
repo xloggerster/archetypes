@@ -1,3 +1,6 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 <!doctype html> 
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=utf-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
@@ -6,13 +9,10 @@
 <head>
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	
-    <title>webapp</title>    
+    <title>secure</title>    
 </head>
 <body>
-  <spring:message code="welcome" />
-  <p>
-  <a href="secure.html">Go to secure</a>
-  </p>
+  secured website
   <!--[if lt IE 9 ]>
     <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
     <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>

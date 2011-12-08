@@ -10,7 +10,7 @@
 	    <intercept-url pattern="/" access="permitAll()" />
 		<intercept-url pattern="/index.html" access="permitAll()" />		
 		<intercept-url pattern="/**" access="isAuthenticated()" />
-		<form-login default-target-url="/index.html" always-use-default-target="true"/>
+		<form-login default-target-url="/index.html" always-use-default-target="false"/>
 		<logout delete-cookies="JSESSIONID"/>
 		<remember-me key="webapp"/>
 	</http>
