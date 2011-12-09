@@ -7,8 +7,8 @@ import static com.mysema.query.types.PathMetadataFactory.forVariable;
 
 import javax.annotation.Generated;
 
+import com.mysema.query.types.Path;
 import com.mysema.query.types.PathMetadata;
-import com.mysema.query.types.path.BeanPath;
 import com.mysema.query.types.path.BooleanPath;
 import com.mysema.query.types.path.DateTimePath;
 import com.mysema.query.types.path.EntityPathBase;
@@ -22,11 +22,12 @@ import com.mysema.query.types.path.StringPath;
 @Generated("com.mysema.query.codegen.EntitySerializer")
 public class QUser extends EntityPathBase<User> {
 
-	private static final long serialVersionUID = 1856506150;
+	private static final long serialVersionUID = -185944538;
 
 	public static final QUser user = new QUser("user");
 
-	public final QAbstractPersistable _super = new QAbstractPersistable(this);
+	public final org.springframework.data.jpa.domain.QAbstractPersistable _super = new org.springframework.data.jpa.domain.QAbstractPersistable(
+			this);
 
 	public final DateTimePath<java.util.Date> createDate = createDateTime("createDate", java.util.Date.class);
 
@@ -52,7 +53,7 @@ public class QUser extends EntityPathBase<User> {
 		super(User.class, forVariable(variable));
 	}
 
-	public QUser(BeanPath<? extends User> entity) {
+	public QUser(Path<? extends User> entity) {
 		super(entity.getType(), entity.getMetadata());
 	}
 

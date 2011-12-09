@@ -19,6 +19,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 import org.springframework.util.StringUtils;
 
 @Entity
