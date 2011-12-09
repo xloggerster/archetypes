@@ -26,7 +26,8 @@ public class QUser extends EntityPathBase<User> {
 
 	public static final QUser user = new QUser("user");
 
-	public final QAbstractPersistable _super = new QAbstractPersistable(this);
+	public final org.springframework.data.jpa.domain.QAbstractPersistable _super = new org.springframework.data.jpa.domain.QAbstractPersistable(
+			this);
 
 	public final SetPath<Address, QAddress> addresses = this.<Address, QAddress> createSet("addresses", Address.class,
 			QAddress.class);

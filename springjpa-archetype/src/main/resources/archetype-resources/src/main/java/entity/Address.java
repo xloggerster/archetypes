@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 public class Address extends AbstractPersistable<Long> {
