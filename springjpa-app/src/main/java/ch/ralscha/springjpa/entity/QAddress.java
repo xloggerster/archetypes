@@ -23,7 +23,8 @@ public class QAddress extends EntityPathBase<Address> {
 
 	public static final QAddress address = new QAddress("address");
 
-	public final QAbstractPersistable _super = new QAbstractPersistable(this);
+	public final org.springframework.data.jpa.domain.QAbstractPersistable _super = new org.springframework.data.jpa.domain.QAbstractPersistable(
+			this);
 
 	public final StringPath city = createString("city");
 
