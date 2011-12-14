@@ -5,7 +5,7 @@
       <artifactId>springjpa-archetype</artifactId>
       <version>1.0.0</version>
       <repository>http://ralscha.ch/archetypes</repository>
-      <description>Spring 3.1, JPA2, Spring-Data-Jpa, QueryDSL, Hibernate 3</description>
+      <description>Spring 3.1, JPA2, Spring-Data-Jpa, QueryDSL, Hibernate 4</description>
     </archetype>
 	
     <archetype>
@@ -29,7 +29,7 @@
       <artifactId>webapp-archetype</artifactId>
       <version>1.0.0</version>
       <repository>http://ralscha.ch/archetypes</repository>
-      <description>Webapp with Spring MVC 3, Spring 3.1, Spring Security, JPA2, Spring-Data-Jpa, QueryDSL, Hibernate 3</description>
+      <description>Webapp with Spring MVC 3, Spring 3.1, Spring Security, JPA2, Spring-Data-Jpa, QueryDSL, Hibernate 4</description>
     </archetype>	
 
     <archetype>
@@ -37,7 +37,7 @@
       <artifactId>starter-archetype</artifactId>
       <version>1.0.0</version>
       <repository>http://ralscha.ch/archetypes</repository>
-      <description>Complete Webapp ExtJs,Spring,JPA</description>
+      <description>Complete Webapp ExtJs,Spring,JPA,Hibernate</description>
     </archetype>	
 
   </archetypes>
