@@ -3,6 +3,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<prerequisites>
+		<maven>3.0.0</maven>
+	</prerequisites>
+
+
 	<groupId>ch.ralscha</groupId>
 	<artifactId>springmvc-archetype</artifactId>
 	<version>1.0.0</version>
@@ -25,6 +30,27 @@
 					<artifactId>maven-archetype-plugin</artifactId>
 					<version>2.2</version>
 				</plugin>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.4.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.7</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.3.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.0</version>
+				</plugin>				
+				
 			</plugins>
 		</pluginManagement>
 	</build>

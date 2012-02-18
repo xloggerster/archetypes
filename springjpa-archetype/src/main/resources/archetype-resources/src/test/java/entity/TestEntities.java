@@ -65,6 +65,7 @@ public class TestEntities {
 		assertEquals(true, normalUser.isEnabled());
 		assertEquals("de_CH", normalUser.getLocale());
 		assertNotNull(normalUser.getCreateDate());
+
 	}
 
 	@Test
