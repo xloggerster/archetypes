@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import ${groupId}.embeddedtc.TomcatTest;
+import ch.ralscha.embeddedtc.TomcatTest;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
