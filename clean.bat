@@ -7,7 +7,7 @@ call mvn clean
 cd ../webappsimple-app
 call mvn clean
 
-cd springjpa-archetype
+cd ../springjpa-archetype
 call mvn clean
 cd ../springmvc-archetype
 call mvn clean
