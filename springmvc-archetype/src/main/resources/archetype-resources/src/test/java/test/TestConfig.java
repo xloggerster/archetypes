@@ -9,5 +9,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = { "${package}.controller" })
 public class TestConfig {
-
+	//nothing here
 }

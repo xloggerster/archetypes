@@ -8,10 +8,12 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import ${groupId}.embeddedtc.TomcatTest;
+
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
-public class IntegrationTest extends JettyTest {
+public class IntegrationTest extends TomcatTest {
 
 	@Test
 	public void testCounterPage() throws Exception {

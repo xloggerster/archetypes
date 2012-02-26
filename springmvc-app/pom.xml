@@ -18,8 +18,6 @@
 		<slf4j.version>1.6.4</slf4j.version>
 		<logback.version>1.0.0</logback.version>
 
-		<jetty.version>8.1.1.v20120215</jetty.version>
-
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.debug>true</maven.compiler.debug>
 
@@ -97,41 +95,20 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>11.0.1</version>
+			<version>11.0.2</version>
 		</dependency>
 
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>2.0</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-server</artifactId>
-			<version>${jetty.version}</version>
-			<scope>provided</scope>
+			<version>2.1</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-webapp</artifactId>
-			<version>${jetty.version}</version>
+			<groupId>ch.ralscha</groupId>
+			<artifactId>embeddedtc</artifactId>
+			<version>0.0.3-SNAPSHOT</version>
 			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-jsp</artifactId>
-			<version>${jetty.version}</version>
-			<scope>provided</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>javax.servlet.jsp.jstl</artifactId>
-					<groupId>org.eclipse.jetty.orbit</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -200,18 +177,12 @@
 		<plugins>
 
 			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>${jetty.version}</version>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.0-beta-1</version>
 				<configuration>
-					<stopPort>8005</stopPort>
-					<stopKey>STOP</stopKey>
-
-					<webAppConfig>
-						<contextPath>/</contextPath>
-						<defaultsDescriptor>${basedir}/src/main/config/webdefault.xml</defaultsDescriptor>
-					</webAppConfig>
-
+					<path>/</path>
+					<port>8080</port>
 				</configuration>
 			</plugin>
 
@@ -230,7 +201,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.12</version>
 				<configuration>
-					<useManifestOnlyJar>false</useManifestOnlyJar>
+					<useSystemClassLoader>false</useSystemClassLoader>
 				</configuration>
 			</plugin>
 
@@ -269,7 +240,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<packagingExcludes>WEB-INF/classes/StartJetty*</packagingExcludes>
+					<packagingExcludes>WEB-INF/classes/StartTomcat*</packagingExcludes>
 				</configuration>
 			</plugin>
 

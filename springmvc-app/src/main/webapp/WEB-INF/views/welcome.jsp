@@ -14,8 +14,8 @@
 	<h1>
 		<fmt:message key="welcome.title"/>
 	</h1>
-  
-  <a href='<c:url value="/myController/doSomething"/>'>Show today date</a>
+
+  <a href='<c:url value="myController/doSomething"/>'>Show today date</a>
 	<hr>	
 	<ul>
 		<li><a href="?locale=en_gb">gb</a> | <a href="?locale=de_de">de</a></li>

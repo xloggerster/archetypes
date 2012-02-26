@@ -10,12 +10,14 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import ${groupId}.embeddedtc.TomcatTest;
+
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
 
-public class IntegrationTest extends JettyTest {
+public class IntegrationTest extends TomcatTest {
 
 	@Test
 	public void testCounterPage() throws Exception {
