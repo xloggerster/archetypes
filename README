@@ -1,1 +1,1 @@
-mvn archetype:generate -DarchetypeCatalog=http://ralscha.ch/archetypes
+mvn archetype:generate -DarchetypeCatalog=http://rasc.ch/archetypes
