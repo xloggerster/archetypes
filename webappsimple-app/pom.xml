@@ -42,7 +42,7 @@
 		<dependency>
 			<groupId>ch.ralscha</groupId>
 			<artifactId>embeddedtc</artifactId>
-			<version>0.0.5</version>
+			<version>0.0.7</version>
 			<scope>provided</scope>
 		</dependency>
 
