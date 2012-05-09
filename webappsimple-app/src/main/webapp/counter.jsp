@@ -10,7 +10,7 @@
 
 <body>
 
-<jsp:useBean id="counter" scope="session" class="ch.ralscha.webapp.DemoBean" />
+<jsp:useBean id="counter" scope="session" class="ch.rasc.webapp.DemoBean" />
 <% counter.inc(); %>
 
 <h2>Hello World!</h2>

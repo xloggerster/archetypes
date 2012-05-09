@@ -7,8 +7,7 @@
 		<maven>3.0.0</maven>
 	</prerequisites>
 
-
-	<groupId>ch.ralscha</groupId>
+	<groupId>ch.rasc</groupId>
 	<artifactId>webappsimple-archetype</artifactId>
 	<version>1.0.0</version>
 	<packaging>maven-archetype</packaging>
@@ -49,8 +48,8 @@
 				<plugin>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>3.1</version>
-				</plugin>				
-				
+				</plugin>
+
 			</plugins>
 		</pluginManagement>
 	</build>
