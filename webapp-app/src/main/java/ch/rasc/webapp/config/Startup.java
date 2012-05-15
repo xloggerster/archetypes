@@ -32,7 +32,7 @@ public class Startup implements ApplicationListener<ContextRefreshedEvent> {
 	@Transactional
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		if (userRepository.count() == 0) {
-			//admin user
+			// admin user
 			User adminUser = new User();
 			adminUser.setUserName("admin");
 			adminUser.setEmail("test@test.ch");
@@ -48,7 +48,7 @@ public class Startup implements ApplicationListener<ContextRefreshedEvent> {
 
 			userRepository.save(adminUser);
 
-			//normal user
+			// normal user
 			User normalUser = new User();
 			normalUser.setUserName("user");
 			normalUser.setEmail("user@test.ch");

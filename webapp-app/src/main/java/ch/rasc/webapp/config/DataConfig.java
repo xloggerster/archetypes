@@ -42,7 +42,7 @@ public class DataConfig {
 		emf.setPackagesToScan("ch.rasc.webapp.entity");
 
 		Map<String, String> properties = Maps.newHashMap();
-		//properties.put("hibernate.show_sql", "true");
+		// properties.put("hibernate.show_sql", "true");
 
 		String dialect = environment.getProperty("hibernate.dialect");
 		if (dialect != null) {
