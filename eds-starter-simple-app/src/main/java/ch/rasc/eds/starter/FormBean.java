@@ -2,50 +2,50 @@ package ch.rasc.eds.starter;
 
 public class FormBean {
 
-	private String firstName;
+	private String osName;
 
-	private String lastName;
+	private String osVersion;
 
-	private String time;
+	private int availableProcessors;
+	
+	private String remarks;
 
-	private String serverInfo;
-
-	public String getFirstName() {
-		return firstName;
+	public String getOsName() {
+		return osName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setOsName(String osName) {
+		this.osName = osName;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getOsVersion() {
+		return osVersion;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setOsVersion(String osVersion) {
+		this.osVersion = osVersion;
 	}
 
-	public String getTime() {
-		return time;
+	public int getAvailableProcessors() {
+		return availableProcessors;
 	}
 
-	public void setTime(String time) {
-		this.time = time;
+	public void setAvailableProcessors(int availableProcessors) {
+		this.availableProcessors = availableProcessors;
 	}
 
-	public String getServerInfo() {
-		return serverInfo;
+	public String getRemarks() {
+		return remarks;
 	}
 
-	public void setServerInfo(String serverInfo) {
-		this.serverInfo = serverInfo;
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
 	}
 
 	@Override
 	public String toString() {
-		return "FormBean [firstName=" + firstName + ", lastName=" + lastName + ", time=" + time + ", serverInfo="
-				+ serverInfo + "]";
+		return "FormBean [osName=" + osName + ", osVersion=" + osVersion + ", availableProcessors="
+				+ availableProcessors + ", remarks=" + remarks + "]";
 	}
 
 }
