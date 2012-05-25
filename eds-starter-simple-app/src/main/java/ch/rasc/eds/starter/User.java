@@ -12,15 +12,18 @@ public class User {
 
 	private String email;
 
+	private String department;
+
 	public User() {
 		// default constructor
 	}
 
-	public User(String firstName, String lastName, String email) {
+	public User(String firstName, String lastName, String email, String department) {
 		this.id = UUID.randomUUID().toString();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.department = department;
 	}
 
 	public String getId() {
@@ -53,6 +56,10 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getDepartment() {
+		return department;
 	}
 
 }

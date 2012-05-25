@@ -7,7 +7,7 @@ Ext.define('Starter.view.Viewport', {
 		type: 'vbox'
 	},
 	
-	requires: [ 'Starter.view.StorePanel', 'Starter.view.PollPanel' ],
+	requires: [ 'Starter.view.StorePanel', 'Starter.view.PollPanel', 'Starter.view.TreePanel' ],
 
 	initComponent: function() {
 		this.items = [ {
@@ -38,7 +38,7 @@ Ext.define('Starter.view.Viewport', {
 				flex: 1,
 				margins: 5
 			}, {
-				xtype: 'panel',
+				xtype: 'companytreepanel',
 				flex: 1,
 				margins: 5
 			} ]

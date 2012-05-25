@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import ch.ralscha.extdirectspring.annotation.ExtDirectMethod;
 import ch.ralscha.extdirectspring.bean.ExtDirectStoreReadRequest;
+import ch.ralscha.extdirectspring.bean.ExtDirectStoreResponse;
 import ch.rasc.eds.starter.SimpleUserDb;
 import ch.rasc.eds.starter.User;
 import ch.rasc.eds.starter.util.PropertyOrderingFactory;
@@ -22,15 +23,21 @@ public class StoreService {
 	private SimpleUserDb db;
 
 	@ExtDirectMethod(STORE_READ)
-	public List<User> read(ExtDirectStoreReadRequest storeRequest) {
+	public ExtDirectStoreResponse<User> read(ExtDirectStoreReadRequest storeRequest) {
 		List<User> users = db.getAll();
+		int totalSize = users.size();
 
 		Ordering<User> ordering = PropertyOrderingFactory.INSTANCE.createOrderingFromSorters(storeRequest.getSorters());
 		if (ordering != null) {
 			users = ordering.sortedCopy(users);
 		}
 
-		return users;
+		if (storeRequest.getStart() != null && storeRequest.getLimit() != null) {
+			users = users.subList(storeRequest.getStart(),
+					Math.min(totalSize, storeRequest.getStart() + storeRequest.getLimit()));
+		}
+
+		return new ExtDirectStoreResponse<User>(totalSize, users);
 
 	}
 }
