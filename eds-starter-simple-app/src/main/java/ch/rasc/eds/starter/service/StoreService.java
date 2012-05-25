@@ -1,6 +1,7 @@
 package ch.rasc.eds.starter.service;
 
 import static ch.ralscha.extdirectspring.annotation.ExtDirectMethodType.STORE_READ;
+import static ch.ralscha.extdirectspring.annotation.ExtDirectMethodType.STORE_MODIFY;
 
 import java.util.List;
 
@@ -38,6 +39,23 @@ public class StoreService {
 		}
 
 		return new ExtDirectStoreResponse<User>(totalSize, users);
-
 	}
+	
+	@ExtDirectMethod(STORE_MODIFY)
+	public User create(User newUser) {
+		db.update(newUser);
+		return newUser;
+	}
+	
+	@ExtDirectMethod(STORE_MODIFY)
+	public User update(User updatedUser) {
+		db.update(updatedUser);
+		return updatedUser;
+	}
+	
+	@ExtDirectMethod(STORE_MODIFY)
+	public void destroy(User destroyedUser) {
+		db.delete(destroyedUser);
+	}
+	
 }

@@ -85,12 +85,18 @@ public class SimpleUserDb {
 		return users.get(id);
 	}
 
-	public void deleteUser(User user) {
+	public void delete(User user) {
 		users.remove(user.getId());
+	}
+	
+	public void update(User user) {
+		users.put(user.getId(), user);		
 	}
 
 	public ImmutableList<String> getDepartments() {
 		return departments;
 	}
+
+
 
 }

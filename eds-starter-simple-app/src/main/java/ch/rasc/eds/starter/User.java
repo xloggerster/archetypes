@@ -62,4 +62,10 @@ public class User {
 		return department;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", department=" + department + "]";
+	}
+
 }

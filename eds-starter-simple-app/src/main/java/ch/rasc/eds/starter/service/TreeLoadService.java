@@ -31,6 +31,7 @@ public class TreeLoadService {
 			root.id = "Company";
 			root.text = "Company";
 			root.leaf = false;
+			root.expanded = true;
 
 			ImmutableList.Builder<Node> builder = ImmutableList.builder();
 			for (String department : db.getDepartments()) {
@@ -65,6 +66,8 @@ public class TreeLoadService {
 		public String text;
 
 		public boolean leaf;
+		
+		public boolean expanded;
 
 		public ImmutableList<Node> children;
 	}

@@ -12,19 +12,48 @@ Ext.define('Starter.view.StorePanel', {
 			columns: [ {
 				xtype: 'gridcolumn',
 				dataIndex: 'firstName',
+				text: 'First Name',
 				flex: 1,
-				text: 'First Name'
+				editor: {
+					xtype: 'textfield',
+					allowBlank: false
+				}
 			}, {
 				xtype: 'gridcolumn',
 				dataIndex: 'lastName',
+				text: 'Last Name',
 				flex: 1,
-				text: 'Last Name'
+				editor: {
+					xtype: 'textfield',
+					allowBlank: false
+				}
 			}, {
 				xtype: 'gridcolumn',
 				dataIndex: 'email',
+				text: 'Email',
 				flex: 1,
-				text: 'Email'
+				editor: {
+					xtype: 'textfield',
+					allowBlank: false,
+					vtype: 'email'
+				}
+			} ],
+
+			plugins: [ Ext.create('Ext.grid.plugin.RowEditing', {pluginId: 'storePanelRowEditing'}) ],
+
+			dockedItems: [ {
+				xtype: 'toolbar',
+				dock: 'top',
+				items: [ {
+					text: 'New',
+					action: 'new'
+				}, {
+					text: 'Delete',
+					action: 'delete',
+					disabled: true
+				} ]
 			} ]
+
 		});
 
 		me.callParent(arguments);

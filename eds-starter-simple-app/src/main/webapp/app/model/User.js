@@ -12,6 +12,9 @@ Ext.define('Starter.model.User', {
 	}, {
 		name: 'email',
 		type: 'string'
+	}, {
+		name: 'department',
+		type: 'string'
 	} ],
 
 	validations: [ {
@@ -24,7 +27,12 @@ Ext.define('Starter.model.User', {
 
 	proxy: {
 		type: 'direct',
-		directFn: storeService.read,
+		api: {
+			read: storeService.read,
+			create: storeService.create,
+			update: storeService.update,
+			destroy: storeService.destroy
+		},
 		reader: {
 			root: 'records'
 		}
