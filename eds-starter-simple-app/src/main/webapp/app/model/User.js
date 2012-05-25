@@ -24,6 +24,9 @@ Ext.define('Starter.model.User', {
 
 	proxy: {
 		type: 'direct',
-		directFn: storeService.read
+		directFn: storeService.read,
+		reader: {
+			root: 'records'
+		}
 	}
 });
