@@ -3,7 +3,7 @@ Ext.Loader.setConfig({
 });
 
 Ext.require('Ext.direct.*', function() {
-	var chartDataPoller = new Ext.direct.PollingProvider({
+	var chartDataPoller = Ext.create('Ext.direct.PollingProvider', {
 		id: 'chartDataPoller',
 		type: 'polling',
 		interval: 5 * 1000, // 5 seconds
@@ -11,6 +11,7 @@ Ext.require('Ext.direct.*', function() {
 	});
 
 	Ext.direct.Manager.addProvider(Ext.app.REMOTING_API, chartDataPoller);
+	Ext.direct.Manager.getProvider('chartDataPoller').disconnect();
 });
 
 Ext.application({
