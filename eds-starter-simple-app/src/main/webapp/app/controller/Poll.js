@@ -5,77 +5,63 @@ Ext.define('Starter.controller.Poll', {
 	models: [ 'PageHit' ],
 	views: [ 'PollPanel' ],
 
-	// refs: [ {
-	// ref: 'startStopButton',
-	// selector: 'pollchart button[action=control]'
-	// } ],
+	refs: [ {
+		ref: 'startButton',
+		selector: 'pollpanel button[action=start]'
+	}, {
+		ref: 'stopButton',
+		selector: 'pollpanel button[action=stop]'
+	} ],
 
 	init: function() {
-		var provider = Ext.direct.Manager.getProvider('chartDataPoller');
-		provider.addListener('data', this.onData, this);
-
-		// this.control({
-		// 'pollchart': {
-		// add: this.onAdd,
-		// destroy: this.stopPolling,
-		// beforeactivate: this.startPolling,
-		// beforedeactivate: this.stopPolling
-		// },
-		// 'pollchart button[action=control]': {
-		// click: this.startOrStop
-		// }
-		// });
+		this.control({
+			'pollpanel': {
+				afterrender: this.startPolling,
+				destroy: this.stopPolling
+			},
+			'pollpanel button[action=start]': {
+				click: this.startPolling
+			},
+			'pollpanel button[action=stop]': {
+				click: this.stopPolling
+			}
+		});
 	},
 
-	
 	onData: function(provider, event) {
 		if (event.data) {
 			var store = this.getPageHitsStore(), model = this.getPageHitModel();
 			store.removeAll(true);
-			
+
 			Ext.each(Ext.Date.monthNames, function(name, ix) {
-				store.add(model.create({month: name.substring(0,3), hit: event.data[ix]}));
+				store.add(model.create({
+					month: name.substring(0, 3),
+					hit: event.data[ix]
+				}));
 			});
 		}
 	},
-//
-// onAdd: function(cmp) {
-// this.provider = Ext.direct.Manager.getProvider('chartdatapoller');
-// this.startPolling();
-// },
-//
-// startOrStop: function() {
-// if (!this.provider.isConnected()) {
-// this.startPolling();
-// } else {
-// this.stopPolling();
-// }
-// },
-//	
-// startPolling: function() {
-// var button = this.getStartStopButton();
-// if (button) {
-// button.setText(i18n.chart_stop);
-// button.setIconCls('icon-stop');
-// }
-//		
-// if (!this.provider.isConnected()) {
-// this.provider.addListener('data', this.onData, this);
-// this.provider.connect();
-// }
-// },
-//	
-// stopPolling: function() {
-// var button = this.getStartStopButton();
-// if (button) {
-// button.setText(i18n.chart_start);
-// button.setIconCls('icon-start');
-// }
-//		
-// if (this.provider.isConnected()) {
-// this.provider.removeListener('data', this.onData);
-// this.provider.disconnect();
-// }
-// }
+
+	startPolling: function() {
+		var provider = Ext.direct.Manager.getProvider('chartDataPoller');
+
+		this.getStartButton().disable();
+		this.getStopButton().enable();
+		if (!provider.isConnected()) {
+			provider.addListener('data', this.onData, this);
+			provider.connect();
+		}
+	},
+
+	stopPolling: function() {
+		var provider = Ext.direct.Manager.getProvider('chartDataPoller');
+
+		this.getStartButton().enable();
+		this.getStopButton().disable();
+		if (provider.isConnected()) {
+			provider.removeListener('data', this.onData);
+			provider.disconnect();
+		}
+	}
 
 });

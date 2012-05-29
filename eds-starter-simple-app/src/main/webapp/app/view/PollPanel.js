@@ -22,8 +22,7 @@ Ext.define('Starter.view.PollPanel', {
 				}, {
 					type: 'Numeric',
 					fields: [ 'hit' ],
-					position: 'left',
-					title: 'Hits'
+					position: 'left'
 				} ],
 				series: [ {
 					type: 'column',
@@ -35,6 +34,18 @@ Ext.define('Starter.view.PollPanel', {
 					},
 					xField: 'month',
 					yField: 'hit'
+				} ]
+			} ],
+			dockedItems: [ {
+				xtype: 'toolbar',
+				dock: 'top',
+				items: [ {
+					text: 'Start Polling',
+					action: 'start',
+					disabled: true
+				}, {
+					text: 'Stop Polling',
+					action: 'stop'
 				} ]
 			} ]
 		});
