@@ -3,31 +3,32 @@ Ext.define('Starter.view.FormPanel', {
 	itemId: 'formPanel',
 	bodyPadding: 10,
 	title: 'FORM_LOAD, FORM_POST and SIMPLE',
-	
+
+	layout: {
+		type: 'vbox',
+		align: 'stretch'
+	},
+
 	constructor: function(config) {
-        Ext.applyIf(config, {
-        	api: {
-        		load: formLoadService.getFormData,
-        		submit: formSubmitController.handleFormSubmit
-        	},
-        	paramsAsHash: true
-        });
-        this.callParent(arguments);
-    },
-	
+		Ext.applyIf(config, {
+			api: {
+				load: formLoadService.getFormData,
+				submit: formSubmitController.handleFormSubmit
+			},
+			paramsAsHash: true
+		});
+		this.callParent(arguments);
+	},
+
 	initComponent: function() {
 		var me = this;
 
 		Ext.applyIf(me, {
-			
-			defaults: {
-				anchor: '100%'
-			},
 
 			items: [ {
 				xtype: 'textfield',
 				name: 'osName',
-				fieldLabel: 'OS Name',				
+				fieldLabel: 'OS Name',
 				allowBlank: false,
 			}, {
 				xtype: 'textfield',
@@ -36,8 +37,7 @@ Ext.define('Starter.view.FormPanel', {
 			}, {
 				xtype: 'numberfield',
 				name: 'availableProcessors',
-				fieldLabel: 'Available Processors',
-				anchor: '60%'
+				fieldLabel: 'Available Processors'
 			}, {
 				xtype: 'filefield',
 				name: 'screenshot',
@@ -45,7 +45,8 @@ Ext.define('Starter.view.FormPanel', {
 			}, {
 				xtype: 'textareafield',
 				name: 'remarks',
-				fieldLabel: 'Remarks'
+				fieldLabel: 'Remarks',
+				flex: 1
 			} ],
 
 			buttons: [ {
