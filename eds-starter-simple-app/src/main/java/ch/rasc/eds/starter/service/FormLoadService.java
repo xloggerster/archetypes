@@ -17,11 +17,11 @@ public class FormLoadService {
 	public String getRemark() {
 		return "Used Heap: " + ManagementFactory.getMemoryMXBean().getHeapMemoryUsage().getUsed() + " bytes";
 	}
-	
+
 	@ExtDirectMethod(FORM_LOAD)
-	public FormBean getFormData() {		
+	public FormBean getFormData() {
 		OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();
-		
+
 		FormBean bean = new FormBean();
 		bean.setAvailableProcessors(osBean.getAvailableProcessors());
 		bean.setOsName(osBean.getName());

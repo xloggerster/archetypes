@@ -19,17 +19,17 @@ public class FormSubmitController {
 
 	@ExtDirectMethod(FORM_POST)
 	@RequestMapping(value = "/handleFormSubmit", method = RequestMethod.POST)
-	public void handleFormSubmit(FormBean bean, MultipartFile screenshot, HttpServletRequest request, HttpServletResponse response) {
-		
-		String result = "Server got: \n" + bean.toString();
+	public void handleFormSubmit(FormBean bean, MultipartFile screenshot, HttpServletRequest request,
+			HttpServletResponse response) {
+
+		String result = "Server received: \n" + bean.toString();
 		result += "\n";
-		
+
 		if (!screenshot.isEmpty()) {
 			result += "ContentType: " + screenshot.getContentType() + "\n";
 			result += "Size: " + screenshot.getSize() + "\n";
 			result += "Name: " + screenshot.getOriginalFilename();
 		}
-		
 
 		ExtDirectResponseBuilder.create(request, response).addResultProperty("response", result).buildAndWrite();
 	}
