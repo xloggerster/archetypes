@@ -1,4 +1,6 @@
-cd springjpa-app
+cd eds-starter-simple-app
+call mvn verify
+cd ../springjpa-app
 call mvn verify
 cd ../springmvc-app
 call mvn verify

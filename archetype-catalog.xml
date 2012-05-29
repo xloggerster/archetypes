@@ -35,10 +35,10 @@
 
     <archetype>
       <groupId>ch.rasc</groupId>
-      <artifactId>starter-archetype</artifactId>
+      <artifactId>eds-starter-simple-archetype</artifactId>
       <version>1.0.0</version>
       <repository>http://rasc.ch/archetypes</repository>
-      <description>Complete Webapp ExtJs,Spring,JPA,Hibernate</description>
+      <description>Simple Webapp with Ext Js 4.1, ExtDirectSpring 1.1.0 and Spring 3.1.1</description>
     </archetype>	
 
   </archetypes>

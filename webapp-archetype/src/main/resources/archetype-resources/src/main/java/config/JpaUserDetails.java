@@ -23,10 +23,15 @@ public class JpaUserDetails implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	private ImmutableSet<GrantedAuthority> authorities;
+
 	private String password;
+
 	private String username;
+
 	private boolean enabled;
+
 	private String fullName;
+
 	private Locale locale;
 
 	public JpaUserDetails(User user) {

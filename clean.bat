@@ -1,4 +1,6 @@
-cd springjpa-app
+cd eds-starter-simple-app
+call mvn clean
+cd ../springjpa-app
 call mvn clean
 cd ../springmvc-app
 call mvn clean

@@ -1,4 +1,6 @@
-cd springjpa-app
+cd eds-starter-simple-app
+call mvn clean archetype:create-from-project
+cd ../springjpa-app
 call mvn clean archetype:create-from-project
 cd ../springmvc-app
 call mvn clean archetype:create-from-project
