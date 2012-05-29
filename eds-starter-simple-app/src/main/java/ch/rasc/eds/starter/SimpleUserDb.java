@@ -64,8 +64,9 @@ public class SimpleUserDb {
 			return ImmutableList.copyOf(Collections2.filter(users.values(), new Predicate<User>() {
 				@Override
 				public boolean apply(User input) {
-					return input.getFirstName().contains(filter) || input.getLastName().contains(filter)
-							|| input.getEmail().contains(filter);
+					String lowerCaseFilter = filter.toLowerCase();
+					return input.getFirstName().toLowerCase().contains(lowerCaseFilter) || input.getLastName().toLowerCase().contains(lowerCaseFilter)
+							|| input.getEmail().toLowerCase().contains(lowerCaseFilter);
 				}
 			}));
 		}
