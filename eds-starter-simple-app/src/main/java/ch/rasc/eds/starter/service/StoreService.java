@@ -1,7 +1,7 @@
 package ch.rasc.eds.starter.service;
 
-import static ch.ralscha.extdirectspring.annotation.ExtDirectMethodType.STORE_READ;
 import static ch.ralscha.extdirectspring.annotation.ExtDirectMethodType.STORE_MODIFY;
+import static ch.ralscha.extdirectspring.annotation.ExtDirectMethodType.STORE_READ;
 
 import java.util.List;
 
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import ch.ralscha.extdirectspring.annotation.ExtDirectMethod;
 import ch.ralscha.extdirectspring.bean.ExtDirectStoreReadRequest;
 import ch.ralscha.extdirectspring.bean.ExtDirectStoreResponse;
+import ch.ralscha.extdirectspring.filter.StringFilter;
 import ch.rasc.eds.starter.SimpleUserDb;
 import ch.rasc.eds.starter.User;
 import ch.rasc.eds.starter.util.PropertyOrderingFactory;
@@ -25,7 +26,14 @@ public class StoreService {
 
 	@ExtDirectMethod(STORE_READ)
 	public ExtDirectStoreResponse<User> read(ExtDirectStoreReadRequest storeRequest) {
-		List<User> users = db.getAll();
+
+		String filterValue = null;
+		if (!storeRequest.getFilters().isEmpty()) {
+			StringFilter filter = (StringFilter) storeRequest.getFilters().iterator().next();
+			filterValue = filter.getValue();
+		}
+
+		List<User> users = db.find(filterValue);
 		int totalSize = users.size();
 
 		Ordering<User> ordering = PropertyOrderingFactory.INSTANCE.createOrderingFromSorters(storeRequest.getSorters());
@@ -40,22 +48,22 @@ public class StoreService {
 
 		return new ExtDirectStoreResponse<User>(totalSize, users);
 	}
-	
+
 	@ExtDirectMethod(STORE_MODIFY)
 	public User create(User newUser) {
 		db.update(newUser);
 		return newUser;
 	}
-	
+
 	@ExtDirectMethod(STORE_MODIFY)
 	public User update(User updatedUser) {
 		db.update(updatedUser);
 		return updatedUser;
 	}
-	
+
 	@ExtDirectMethod(STORE_MODIFY)
 	public void destroy(User destroyedUser) {
 		db.delete(destroyedUser);
 	}
-	
+
 }

@@ -39,7 +39,9 @@ Ext.define('Starter.view.StorePanel', {
 				}
 			} ],
 
-			plugins: [ Ext.create('Ext.grid.plugin.RowEditing', {pluginId: 'storePanelRowEditing'}) ],
+			plugins: [ Ext.create('Ext.grid.plugin.RowEditing', {
+				pluginId: 'storePanelRowEditing'
+			}) ],
 
 			dockedItems: [ {
 				xtype: 'toolbar',
@@ -51,7 +53,17 @@ Ext.define('Starter.view.StorePanel', {
 					text: 'Delete',
 					action: 'delete',
 					disabled: true
+				}, '->', {
+					fieldLabel: 'Filter',
+					labelWidth: 40,
+					xtype: 'textfield',
+					itemId: 'filtertextfield'
 				} ]
+			}, {
+				xtype: 'pagingtoolbar',
+				store: me.getStore(),
+				dock: 'bottom',
+				displayInfo: true
 			} ]
 
 		});
