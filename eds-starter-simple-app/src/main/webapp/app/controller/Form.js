@@ -41,7 +41,7 @@ Ext.define('Starter.controller.Form', {
 				this.getFormPanel().getForm().setValues({
 					remarks: action.result.response
 				});
-			}, 
+			},
 			scope: this
 		});
 	}

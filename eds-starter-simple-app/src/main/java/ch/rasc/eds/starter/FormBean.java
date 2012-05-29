@@ -7,7 +7,7 @@ public class FormBean {
 	private String osVersion;
 
 	private int availableProcessors;
-	
+
 	private String remarks;
 
 	public String getOsName() {
