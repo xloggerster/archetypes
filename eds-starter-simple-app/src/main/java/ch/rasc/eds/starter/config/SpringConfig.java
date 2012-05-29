@@ -27,7 +27,7 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public ClassPathResource randomdata() {
-		return new ClassPathResource("/randomdata.csv");
+		return new ClassPathResource("/randomdata.csv.compressed");
 	}
-	
+
 }
