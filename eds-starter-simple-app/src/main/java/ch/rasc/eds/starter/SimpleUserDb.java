@@ -3,6 +3,7 @@ package ch.rasc.eds.starter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -110,6 +111,6 @@ public class SimpleUserDb {
 			public InputStream getInput() throws IOException {
 				return new InflaterInputStream(randomdata.getInputStream(), new Inflater(true));
 			}
-		}, Charsets.UTF_8);
+		}, StandardCharsets.UTF_8);
 	}
 }
