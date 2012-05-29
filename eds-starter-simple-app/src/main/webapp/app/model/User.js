@@ -1,6 +1,6 @@
 Ext.define('Starter.model.User', {
 	extend: 'Ext.data.Model',
-
+	requires: [ 'Ext.data.UuidGenerator'],
 	idgen: 'uuid',
 
 	fields: [ {
