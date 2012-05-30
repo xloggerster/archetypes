@@ -20,7 +20,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import org.springframework.util.StringUtils;
 
 @Entity
-@Table(name = "`User`")
+@Table(name = "AppUser")
 public class User extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = 1L;
