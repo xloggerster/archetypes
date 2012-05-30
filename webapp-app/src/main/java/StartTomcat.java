@@ -16,7 +16,7 @@ public class StartTomcat {
 		res.setProperty("username", "sa");
 		res.setProperty("password", "");
 
-		res.setProperty("url", "jdbc:h2:~/webapp");
+		res.setProperty("url", "jdbc:h2:./target/webapp");
 		res.setProperty("maxActive", "5");
 
 		res.setProperty("initialSize", "2");

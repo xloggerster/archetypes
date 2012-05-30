@@ -19,7 +19,7 @@ public class StartTomcat {
 		res.setProperty("username", "sa");
 		res.setProperty("password", "");
 
-		res.setProperty("url", "jdbc:h2:~/${artifactId}");
+		res.setProperty("url", "jdbc:h2:./target/${artifactId}");
 		res.setProperty("maxActive", "5");
 
 		res.setProperty("initialSize", "2");

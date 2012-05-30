@@ -7,7 +7,7 @@
             factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
             type="javax.sql.DataSource" username="sa" password=""
             driverClassName="org.h2.Driver"
-            url="jdbc:h2:~/${artifactId}"
+            url="jdbc:h2:./target/${artifactId}"
             initialSize="2"
             minIdle="2"
             maxIdle="4"
