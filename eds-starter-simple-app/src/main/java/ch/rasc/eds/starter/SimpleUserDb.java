@@ -65,7 +65,8 @@ public class SimpleUserDb {
 				@Override
 				public boolean apply(User input) {
 					String lowerCaseFilter = filter.toLowerCase();
-					return input.getFirstName().toLowerCase().contains(lowerCaseFilter) || input.getLastName().toLowerCase().contains(lowerCaseFilter)
+					return input.getFirstName().toLowerCase().contains(lowerCaseFilter)
+							|| input.getLastName().toLowerCase().contains(lowerCaseFilter)
 							|| input.getEmail().toLowerCase().contains(lowerCaseFilter);
 				}
 			}));
