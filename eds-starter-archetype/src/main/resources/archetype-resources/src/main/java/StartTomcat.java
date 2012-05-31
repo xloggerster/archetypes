@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-import ${groupId}.embeddedtc.EmbeddedTomcat;
+import ch.ralscha.embeddedtc.EmbeddedTomcat;
 
 public class StartTomcat {
 	public static void main(String[] args) throws Exception {
