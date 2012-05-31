@@ -30,7 +30,7 @@
       <artifactId>webapp-archetype</artifactId>
       <version>1.0.0</version>
       <repository>http://rasc.ch/archetypes</repository>
-      <description>Webapp with Spring MVC 3, Spring 3.1, Spring Security, JPA2, Spring-Data-Jpa, QueryDSL, Hibernate 4</description>
+      <description>Webapp with Spring 3.1, Spring Security, JPA2, Spring-Data-Jpa, QueryDSL, Hibernate 4</description>
     </archetype>	
 
     <archetype>
@@ -38,8 +38,16 @@
       <artifactId>eds-starter-simple-archetype</artifactId>
       <version>1.0.0</version>
       <repository>http://rasc.ch/archetypes</repository>
-      <description>Simple Webapp with Ext Js 4.1, ExtDirectSpring 1.1.0 and Spring 3.1.1</description>
-    </archetype>	
+      <description>Simple Webapp with Ext JS 4.1, ExtDirectSpring 1.1.0 and Spring 3.1.1</description>
+    </archetype>
+	
+    <archetype>
+      <groupId>ch.rasc</groupId>
+      <artifactId>eds-starter-archetype</artifactId>
+      <version>1.0.0</version>
+      <repository>http://rasc.ch/archetypes</repository>
+      <description>Webapp with Ext JS 4.1, ExtDirectSpring 1.1.0, Spring 3.1.1, Spring Security, JPA2, Spring-Data-Jpa, QueryDSL, Hibernate 4</description>
+    </archetype>		
 
   </archetypes>
 </archetype-catalog>

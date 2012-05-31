@@ -30,7 +30,6 @@
 		<extjs.version>4.1.0</extjs.version>
 	</properties>
 
-
 	<dependencies>
 
 		<dependency>
