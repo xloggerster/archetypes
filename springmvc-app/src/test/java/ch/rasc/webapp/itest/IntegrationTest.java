@@ -40,7 +40,7 @@ public class IntegrationTest extends TomcatTest {
 
 	}
 
-	private HtmlPage login(HtmlPage page, String userName, String password) throws IOException {
+	private HtmlPage login(final HtmlPage page, final String userName, final String password) throws IOException {
 		HtmlForm form = page.getFormByName("f");
 		HtmlSubmitInput submitButton = form.getInputByName("submit");
 		form.getInputByName("j_username").setValueAttribute(userName);
