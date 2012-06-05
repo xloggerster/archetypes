@@ -17,7 +17,7 @@ public class FormBean {
 		return osName;
 	}
 
-	public void setOsName(String osName) {
+	public void setOsName(final String osName) {
 		this.osName = osName;
 	}
 
@@ -25,7 +25,7 @@ public class FormBean {
 		return osVersion;
 	}
 
-	public void setOsVersion(String osVersion) {
+	public void setOsVersion(final String osVersion) {
 		this.osVersion = osVersion;
 	}
 
@@ -33,7 +33,7 @@ public class FormBean {
 		return availableProcessors;
 	}
 
-	public void setAvailableProcessors(int availableProcessors) {
+	public void setAvailableProcessors(final int availableProcessors) {
 		this.availableProcessors = availableProcessors;
 	}
 
@@ -41,7 +41,7 @@ public class FormBean {
 		return remarks;
 	}
 
-	public void setRemarks(String remarks) {
+	public void setRemarks(final String remarks) {
 		this.remarks = remarks;
 	}
 
