@@ -18,7 +18,7 @@ public class User {
 		// default constructor
 	}
 
-	public User(String firstName, String lastName, String email, String department) {
+	public User(final String firstName, final String lastName, final String email, final String department) {
 		this.id = UUID.randomUUID().toString();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -30,7 +30,7 @@ public class User {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(final String id) {
 		this.id = id;
 	}
 
@@ -38,7 +38,7 @@ public class User {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
+	public void setFirstName(final String firstName) {
 		this.firstName = firstName;
 	}
 
@@ -46,7 +46,7 @@ public class User {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
+	public void setLastName(final String lastName) {
 		this.lastName = lastName;
 	}
 
@@ -54,7 +54,7 @@ public class User {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(final String email) {
 		this.email = email;
 	}
 

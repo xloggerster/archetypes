@@ -25,7 +25,7 @@ public class StoreService {
 	private SimpleUserDb db;
 
 	@ExtDirectMethod(STORE_READ)
-	public ExtDirectStoreResponse<User> read(ExtDirectStoreReadRequest storeRequest) {
+	public ExtDirectStoreResponse<User> read(final ExtDirectStoreReadRequest storeRequest) {
 
 		String filterValue = null;
 		if (!storeRequest.getFilters().isEmpty()) {
@@ -50,19 +50,19 @@ public class StoreService {
 	}
 
 	@ExtDirectMethod(STORE_MODIFY)
-	public User create(User newUser) {
+	public User create(final User newUser) {
 		db.update(newUser);
 		return newUser;
 	}
 
 	@ExtDirectMethod(STORE_MODIFY)
-	public User update(User updatedUser) {
+	public User update(final User updatedUser) {
 		db.update(updatedUser);
 		return updatedUser;
 	}
 
 	@ExtDirectMethod(STORE_MODIFY)
-	public void destroy(User destroyedUser) {
+	public void destroy(final User destroyedUser) {
 		db.delete(destroyedUser);
 	}
 

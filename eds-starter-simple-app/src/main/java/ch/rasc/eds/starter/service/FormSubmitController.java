@@ -19,8 +19,8 @@ public class FormSubmitController {
 
 	@ExtDirectMethod(FORM_POST)
 	@RequestMapping(value = "/handleFormSubmit", method = RequestMethod.POST)
-	public void handleFormSubmit(FormBean bean, MultipartFile screenshot, HttpServletRequest request,
-			HttpServletResponse response) {
+	public void handleFormSubmit(final FormBean bean, final MultipartFile screenshot, final HttpServletRequest request,
+			final HttpServletResponse response) {
 
 		String result = "Server received: \n" + bean.toString();
 		result += "\n";
