@@ -44,7 +44,7 @@ public class Address extends AbstractPersistable<Long> {
 		return type;
 	}
 
-	public void setType(Type type) {
+	public void setType(final Type type) {
 		this.type = type;
 	}
 
@@ -52,7 +52,7 @@ public class Address extends AbstractPersistable<Long> {
 		return street;
 	}
 
-	public void setStreet(String street) {
+	public void setStreet(final String street) {
 		this.street = street;
 	}
 
@@ -60,7 +60,7 @@ public class Address extends AbstractPersistable<Long> {
 		return postalCode;
 	}
 
-	public void setPostalCode(String postalCode) {
+	public void setPostalCode(final String postalCode) {
 		this.postalCode = postalCode;
 	}
 
@@ -68,7 +68,7 @@ public class Address extends AbstractPersistable<Long> {
 		return city;
 	}
 
-	public void setCity(String city) {
+	public void setCity(final String city) {
 		this.city = city;
 	}
 
@@ -76,7 +76,7 @@ public class Address extends AbstractPersistable<Long> {
 		return country;
 	}
 
-	public void setCountry(String country) {
+	public void setCountry(final String country) {
 		this.country = country;
 	}
 
@@ -84,7 +84,7 @@ public class Address extends AbstractPersistable<Long> {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(final User user) {
 		this.user = user;
 	}
 

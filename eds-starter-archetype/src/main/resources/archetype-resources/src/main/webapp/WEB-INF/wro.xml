@@ -2,6 +2,7 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE groups>
 <groups xmlns="http://www.isdc.ro/wro">
 
   <group name="app">

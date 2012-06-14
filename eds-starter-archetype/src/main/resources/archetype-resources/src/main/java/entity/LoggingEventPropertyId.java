@@ -23,7 +23,7 @@ public class LoggingEventPropertyId implements Serializable {
 		//no action
 	}
 
-	public LoggingEventPropertyId(long eventId, String mappedKey) {
+	public LoggingEventPropertyId(final long eventId, final String mappedKey) {
 		this.eventId = eventId;
 		this.mappedKey = mappedKey;
 	}
@@ -32,7 +32,7 @@ public class LoggingEventPropertyId implements Serializable {
 		return this.eventId;
 	}
 
-	public void setEventId(long eventId) {
+	public void setEventId(final long eventId) {
 		this.eventId = eventId;
 	}
 
@@ -40,12 +40,12 @@ public class LoggingEventPropertyId implements Serializable {
 		return this.mappedKey;
 	}
 
-	public void setMappedKey(String mappedKey) {
+	public void setMappedKey(final String mappedKey) {
 		this.mappedKey = mappedKey;
 	}
 
 	@Override
-	public boolean equals(Object other) {
+	public boolean equals(final Object other) {
 		if ((this == other)) {
 			return true;
 		}

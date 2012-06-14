@@ -40,7 +40,7 @@ public class InitialDataLoad {
 	public void postConstruct() {
 		transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 			@Override
-			protected void doInTransactionWithoutResult(TransactionStatus status) {
+			protected void doInTransactionWithoutResult(final TransactionStatus status) {
 				init();
 			}
 		});

@@ -22,7 +22,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 	private EntityManager entityManager;
 
 	@Override
-	public List<User> filter(String name, String firstName, String email) {
+	public List<User> filter(final String name, final String firstName, final String email) {
 
 		JPQLQuery query = new JPAQuery(entityManager);
 		query.from(QUser.user);

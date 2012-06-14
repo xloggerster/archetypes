@@ -53,7 +53,7 @@ public class DataConfig {
 		return ds;
 	}
 
-	private void setupLog(DataSource dataSource) {
+	private void setupLog(final DataSource dataSource) {
 		boolean development = environment.acceptsProfiles("development");
 
 		LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();

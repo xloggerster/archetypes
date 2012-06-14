@@ -4,14 +4,22 @@
 package ${package}.service;
 
 public class Poll {
-	private long id;
-	private String time;
+	private final long id;
+
+	private final String time;
+
 	private int processCpuLoad;
+
 	private int systemCpuLoad;
+
 	private long freePhysicalMemorySize;
+
 	private long totalPhysicalMemorySize;
+
 	private long usedHeapMemory;
+
 	private long committedHeapMemory;
+
 	private long maxHeapMemory;
 
 	public Poll(final long id, final String time) {
@@ -39,7 +47,7 @@ public class Poll {
 		return freePhysicalMemorySize;
 	}
 
-	public void setFreePhysicalMemorySize(long freePhysicalMemorySize) {
+	public void setFreePhysicalMemorySize(final long freePhysicalMemorySize) {
 		this.freePhysicalMemorySize = freePhysicalMemorySize;
 	}
 
@@ -47,15 +55,15 @@ public class Poll {
 		return totalPhysicalMemorySize;
 	}
 
-	public void setTotalPhysicalMemorySize(long totalPhysicalMemorySize) {
+	public void setTotalPhysicalMemorySize(final long totalPhysicalMemorySize) {
 		this.totalPhysicalMemorySize = totalPhysicalMemorySize;
 	}
 
-	public void setProcessCpuLoad(int processCpuLoad) {
+	public void setProcessCpuLoad(final int processCpuLoad) {
 		this.processCpuLoad = processCpuLoad;
 	}
 
-	public void setSystemCpuLoad(int systemCpuLoad) {
+	public void setSystemCpuLoad(final int systemCpuLoad) {
 		this.systemCpuLoad = systemCpuLoad;
 	}
 
@@ -63,7 +71,7 @@ public class Poll {
 		return usedHeapMemory;
 	}
 
-	public void setUsedHeapMemory(long usedHeapMemory) {
+	public void setUsedHeapMemory(final long usedHeapMemory) {
 		this.usedHeapMemory = usedHeapMemory;
 	}
 
@@ -71,7 +79,7 @@ public class Poll {
 		return committedHeapMemory;
 	}
 
-	public void setCommittedHeapMemory(long committedHeapMemory) {
+	public void setCommittedHeapMemory(final long committedHeapMemory) {
 		this.committedHeapMemory = committedHeapMemory;
 	}
 
@@ -79,7 +87,7 @@ public class Poll {
 		return maxHeapMemory;
 	}
 
-	public void setMaxHeapMemory(long maxHeapMemory) {
+	public void setMaxHeapMemory(final long maxHeapMemory) {
 		this.maxHeapMemory = maxHeapMemory;
 	}
 

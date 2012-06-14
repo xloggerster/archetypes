@@ -33,7 +33,7 @@ public class Startup implements ApplicationListener<ContextRefreshedEvent> {
 
 	@Override
 	@Transactional
-	public void onApplicationEvent(ContextRefreshedEvent event) {
+	public void onApplicationEvent(final ContextRefreshedEvent event) {
 		if (userRepository.count() == 0) {
 			//admin user
 			User adminUser = new User();

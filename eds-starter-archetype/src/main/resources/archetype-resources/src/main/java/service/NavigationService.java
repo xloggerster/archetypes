@@ -32,7 +32,7 @@ public class NavigationService {
 	@Autowired
 	private MessageSource messageSource;
 
-	private MenuNode root;
+	private final MenuNode root;
 
 	public NavigationService() throws JsonParseException, JsonMappingException, IOException {
 		Resource menu = new ClassPathResource("/menu.json");
@@ -42,7 +42,7 @@ public class NavigationService {
 
 	@ExtDirectMethod(TREE_LOAD)
 	@PreAuthorize("isAuthenticated()")
-	public MenuNode getNavigation(Locale locale) {
+	public MenuNode getNavigation(final Locale locale) {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -52,7 +52,7 @@ public class NavigationService {
 		return copyOfRoot;
 	}
 
-	private void upateIdAndLeaf(MutableInt id, MenuNode parent, Locale locale) {
+	private void upateIdAndLeaf(final MutableInt id, final MenuNode parent, final Locale locale) {
 		parent.setId(id.intValue());
 		parent.setText(messageSource.getMessage(parent.getText(), null, parent.getText(), locale));
 		id.add(1);

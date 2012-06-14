@@ -21,12 +21,12 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+	public void configureDefaultServletHandling(final DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
 
 	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
+	public void addViewControllers(final ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("index");
 		registry.addViewController("/index.html").setViewName("index");
 		registry.addViewController("/secure.html").setViewName("secure");
