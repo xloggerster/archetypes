@@ -1,7 +1,5 @@
 package ch.rasc.eds.starter.config;
 
-import java.nio.charset.StandardCharsets;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24,9 +22,7 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public MultipartResolver multipartResolver() {
-		CommonsMultipartResolver cmr = new CommonsMultipartResolver();
-		cmr.setDefaultEncoding(StandardCharsets.UTF_8.name());
-		return cmr;
+		return new CommonsMultipartResolver();
 	}
 
 	@Bean
