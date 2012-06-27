@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 	<meta charset="utf-8" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>eds-starter-simple</title>
 	
 	<style type="text/css">
@@ -63,17 +63,20 @@
 		    -moz-transform: translateY(-61px);
 		  }
 		}	
+		
+		.chromeframe { position: absolute; top: 5px; left: 5px; background: #ccc; color: black; padding: 0.2em 0.2em; z-index: 999}
 	</style>
-
+    <link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-4.1.0-gpl/resources/css/ext-all-gray.css" />
 </head>
 <body>
+    <!--[if lt IE 8]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<div id="appLoadingIndicator">
 		<span></span>
 		<span></span>
 		<span></span>
 	</div>
-	<script src="nbl.plus.min.js" data-nbl="[
-      'http://extjs.cachefly.net/ext-4.1.0-gpl/resources/css/ext-all-gray.css',
-      ['http://extjs.cachefly.net/ext-4.1.0-gpl/ext-all-debug.js',['api.js','app.js']]]"></script>
+	<script src="http://extjs.cachefly.net/ext-4.1.0-gpl/ext-all-debug.js"></script>
+	<script src="api.js"></script>
+	<script src="app.js"></script>
 </body>
 </html>
