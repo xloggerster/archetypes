@@ -17,5 +17,8 @@ Ext.require('Ext.direct.*', function() {
 Ext.application({
 	controllers: [ 'Poll', 'User', 'Form' ],
 	autoCreateViewport: true,
-	name: 'Starter'
+	name: 'Starter',
+	launch: function() {
+		Ext.fly('appLoadingIndicator').destroy();
+	}
 });
