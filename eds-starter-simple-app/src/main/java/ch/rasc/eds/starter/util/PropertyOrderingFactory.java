@@ -30,7 +30,7 @@ public enum PropertyOrderingFactory {
 
 	public <T> Ordering<T> createOrdering(final String propertyName) {
 		try {
-			Ordering<T> ordering = new PropertyOrdering<T>(propertyName);
+			Ordering<T> ordering = new PropertyOrdering<>(propertyName);
 			return ordering;
 		} catch (ParseException e) {
 			return null;
@@ -39,7 +39,7 @@ public enum PropertyOrderingFactory {
 
 	public <T> Ordering<T> createOrdering(final String propertyName, final SortDirection sortDirection) {
 		try {
-			Ordering<T> ordering = new PropertyOrdering<T>(propertyName);
+			Ordering<T> ordering = new PropertyOrdering<>(propertyName);
 
 			if (sortDirection == SortDirection.DESCENDING) {
 				ordering = ordering.reverse();

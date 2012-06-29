@@ -22,16 +22,17 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.debug>true</maven.compiler.debug>
 	</properties>
-<repositories>
-  <repository>
-      <id>sonatype</id>
-      <name>sonatype</name>
-      <url>https://oss.sonatype.org/content/groups/public</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>      
-    </repository>
-</repositories>
+	
+	<repositories>
+		<repository>
+			<id>sonatype</id>
+			<name>sonatype</name>
+			<url>https://oss.sonatype.org/content/groups/public</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 	<dependencies>
 

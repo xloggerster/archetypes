@@ -46,7 +46,7 @@ public class StoreService {
 					Math.min(totalSize, storeRequest.getStart() + storeRequest.getLimit()));
 		}
 
-		return new ExtDirectStoreResponse<User>(totalSize, users);
+		return new ExtDirectStoreResponse<>(totalSize, users);
 	}
 
 	@ExtDirectMethod(STORE_MODIFY)
