@@ -16,8 +16,8 @@ import ch.ralscha.extdirectspring.bean.ExtDirectResponseBuilder;
 public class FormPostExceptionHandler implements HandlerExceptionResolver {
 
 	@Override
-	public ModelAndView resolveException(final HttpServletRequest request, final HttpServletResponse response,
-			final Object handler, final Exception ex) {
+	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response,
+			final Object handler, Exception ex) {
 
 		LoggerFactory.getLogger(FormPostExceptionHandler.class).error("error", ex);
 		ExtDirectResponseBuilder.create(request, response).setException(ex).buildAndWrite();

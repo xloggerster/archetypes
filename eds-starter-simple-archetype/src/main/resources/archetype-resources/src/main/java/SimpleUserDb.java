@@ -66,7 +66,7 @@ public class SimpleUserDb {
 		if (StringUtils.hasText(filter)) {
 			return ImmutableList.copyOf(Collections2.filter(users.values(), new Predicate<User>() {
 				@Override
-				public boolean apply(final User input) {
+				public boolean apply(User input) {
 					String lowerCaseFilter = filter.toLowerCase();
 					return input.getFirstName().toLowerCase().contains(lowerCaseFilter)
 							|| input.getLastName().toLowerCase().contains(lowerCaseFilter)
@@ -83,7 +83,7 @@ public class SimpleUserDb {
 
 		builder.addAll(Collections2.filter(users.values(), new Predicate<User>() {
 			@Override
-			public boolean apply(final User input) {
+			public boolean apply(User input) {
 				return input.getDepartment().equals(department);
 			}
 		}));
@@ -92,15 +92,15 @@ public class SimpleUserDb {
 
 	}
 
-	public User findUser(final String id) {
+	public User findUser(String id) {
 		return users.get(id);
 	}
 
-	public void delete(final User user) {
+	public void delete(User user) {
 		users.remove(user.getId());
 	}
 
-	public void update(final User user) {
+	public void update(User user) {
 		users.put(user.getId(), user);
 	}
 

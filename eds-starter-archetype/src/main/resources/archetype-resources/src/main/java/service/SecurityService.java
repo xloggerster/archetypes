@@ -7,8 +7,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import ${package}.config.JpaUserDetails;
 import ch.ralscha.extdirectspring.annotation.ExtDirectMethod;
+import ${package}.config.JpaUserDetails;
 
 @Service
 public class SecurityService {

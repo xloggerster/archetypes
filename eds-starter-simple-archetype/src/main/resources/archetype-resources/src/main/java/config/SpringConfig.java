@@ -3,8 +3,6 @@
 #set( $symbol_escape = '\' )
 package ${package}.config;
 
-import java.nio.charset.StandardCharsets;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -21,15 +19,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class SpringConfig extends WebMvcConfigurerAdapter {
 
 	@Override
-	public void configureDefaultServletHandling(final DefaultServletHandlerConfigurer configurer) {
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
 
 	@Bean
 	public MultipartResolver multipartResolver() {
-		CommonsMultipartResolver cmr = new CommonsMultipartResolver();
-		cmr.setDefaultEncoding(StandardCharsets.UTF_8.name());
-		return cmr;
+		return new CommonsMultipartResolver();
 	}
 
 	@Bean

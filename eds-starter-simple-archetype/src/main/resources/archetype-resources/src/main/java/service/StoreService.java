@@ -28,7 +28,7 @@ public class StoreService {
 	private SimpleUserDb db;
 
 	@ExtDirectMethod(STORE_READ)
-	public ExtDirectStoreResponse<User> read(final ExtDirectStoreReadRequest storeRequest) {
+	public ExtDirectStoreResponse<User> read(ExtDirectStoreReadRequest storeRequest) {
 
 		String filterValue = null;
 		if (!storeRequest.getFilters().isEmpty()) {
@@ -39,7 +39,7 @@ public class StoreService {
 		List<User> users = db.find(filterValue);
 		int totalSize = users.size();
 
-		Ordering<User> ordering = PropertyOrderingFactory.INSTANCE.createOrderingFromSorters(storeRequest.getSorters());
+		Ordering<User> ordering = PropertyOrderingFactory.createOrderingFromSorters(storeRequest.getSorters());
 		if (ordering != null) {
 			users = ordering.sortedCopy(users);
 		}
@@ -49,23 +49,23 @@ public class StoreService {
 					Math.min(totalSize, storeRequest.getStart() + storeRequest.getLimit()));
 		}
 
-		return new ExtDirectStoreResponse<User>(totalSize, users);
+		return new ExtDirectStoreResponse<>(totalSize, users);
 	}
 
 	@ExtDirectMethod(STORE_MODIFY)
-	public User create(final User newUser) {
+	public User create(User newUser) {
 		db.update(newUser);
 		return newUser;
 	}
 
 	@ExtDirectMethod(STORE_MODIFY)
-	public User update(final User updatedUser) {
+	public User update(User updatedUser) {
 		db.update(updatedUser);
 		return updatedUser;
 	}
 
 	@ExtDirectMethod(STORE_MODIFY)
-	public void destroy(final User destroyedUser) {
+	public void destroy(User destroyedUser) {
 		db.delete(destroyedUser);
 	}
 

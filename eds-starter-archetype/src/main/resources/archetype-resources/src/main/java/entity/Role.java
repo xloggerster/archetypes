@@ -22,7 +22,7 @@ public class Role extends AbstractPersistable<Long> {
 		return name;
 	}
 
-	public void setName(final String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

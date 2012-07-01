@@ -15,7 +15,7 @@ public class TestController {
 
 	@RequestMapping("/doSomething")
 	public Map<String, Object> doSomething() {
-		Map<String, Object> response = new HashMap<String, Object>();
+		Map<String, Object> response = new HashMap<>();
 
 		String username = null;
 		if (SecurityContextHolder.getContext().getAuthentication() != null) {

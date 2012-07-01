@@ -16,7 +16,7 @@
 
 		<hibernate.version>4.1.4.Final</hibernate.version>
 
-		<querydsl.version>2.6.0</querydsl.version>
+		<querydsl.version>2.7.0</querydsl.version>
 
 		<slf4j.version>1.6.6</slf4j.version>
 		<logback.version>1.0.6</logback.version>
@@ -190,7 +190,7 @@
 		<dependency>
 			<groupId>ro.isdc.wro4j</groupId>
 			<artifactId>wro4j-core</artifactId>
-			<version>1.4.6</version>
+			<version>1.4.7</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>log4j</artifactId>

@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.codehaus.jackson.JsonGenerationException;
@@ -44,8 +43,8 @@ public class I18nMessageController implements InitializingBean {
 	}
 
 	@RequestMapping(value = "/i18n.js", method = RequestMethod.GET)
-	public void i18n(final HttpServletRequest request, final HttpServletResponse response, final Locale locale)
-			throws JsonGenerationException, JsonMappingException, IOException {
+	public void i18n(HttpServletResponse response, Locale locale) throws JsonGenerationException, JsonMappingException,
+			IOException {
 
 		response.setContentType("application/x-javascript;charset=UTF-8");
 

@@ -12,7 +12,6 @@ import javax.sql.DataSource;
 
 import liquibase.integration.spring.SpringLiquibase;
 
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,16 +21,6 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import ch.qos.logback.classic.Level;
-import ch.qos.logback.classic.Logger;
-import ch.qos.logback.classic.LoggerContext;
-import ch.qos.logback.classic.db.DBAppender;
-import ch.qos.logback.classic.encoder.PatternLayoutEncoder;
-import ch.qos.logback.classic.spi.ILoggingEvent;
-import ch.qos.logback.core.ConsoleAppender;
-import ch.qos.logback.core.db.DataSourceConnectionSource;
-import ch.qos.logback.core.util.StatusPrinter;
 
 import com.google.common.collect.Maps;
 
@@ -46,55 +35,7 @@ public class DataConfig {
 	@Bean
 	public DataSource dataSource() throws NamingException {
 		Context ctx = new InitialContext();
-
-		DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/ds");
-		setupLog(ds);
-
-		return ds;
-	}
-
-	private void setupLog(final DataSource dataSource) {
-		boolean development = environment.acceptsProfiles("development");
-
-		LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
-		lc.reset();
-
-		ConsoleAppender<ILoggingEvent> consoleAppender = null;
-		if (development) {
-			PatternLayoutEncoder encoder = new PatternLayoutEncoder();
-			encoder.setContext(lc);
-			encoder.setPattern("%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n");
-			encoder.start();
-
-			consoleAppender = new ConsoleAppender<ILoggingEvent>();
-			consoleAppender.setContext(lc);
-			consoleAppender.setEncoder(encoder);
-			consoleAppender.start();
-		}
-
-		DataSourceConnectionSource source = new DataSourceConnectionSource();
-		source.setContext(lc);
-		source.setDataSource(dataSource);
-		source.start();
-
-		DBAppender dbAppender = new DBAppender();
-		dbAppender.setContext(lc);
-		dbAppender.setConnectionSource(source);
-		dbAppender.start();
-
-		Logger appLogger = lc.getLogger("${package}");
-		appLogger.setLevel(Level.WARN);
-
-		Logger rootLogger = lc.getLogger("root");
-		rootLogger.setLevel(Level.WARN);
-		if (development) {
-			rootLogger.addAppender(consoleAppender);
-		}
-		rootLogger.addAppender(dbAppender);
-		lc.start();
-
-		StatusPrinter.printInCaseOfErrorsOrWarnings(lc);
-
+		return (DataSource) ctx.lookup("java:comp/env/jdbc/ds");
 	}
 
 	@Bean

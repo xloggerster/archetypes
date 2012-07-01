@@ -19,14 +19,14 @@ import org.springframework.util.StringUtils;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
-import ${package}.entity.LoggingEvent;
-import ${package}.entity.QLoggingEvent;
-import ${package}.repository.LoggingEventRepository;
-import ${package}.util.Util;
 import ch.ralscha.extdirectspring.annotation.ExtDirectMethod;
 import ch.ralscha.extdirectspring.bean.ExtDirectStoreReadRequest;
 import ch.ralscha.extdirectspring.bean.ExtDirectStoreResponse;
 import ch.ralscha.extdirectspring.filter.StringFilter;
+import ${package}.entity.LoggingEvent;
+import ${package}.entity.QLoggingEvent;
+import ${package}.repository.LoggingEventRepository;
+import ${package}.util.Util;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
@@ -43,7 +43,7 @@ public class LoggingEventService {
 	@ExtDirectMethod(STORE_READ)
 	@Transactional(readOnly = true)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ExtDirectStoreResponse<LoggingEventDto> load(final ExtDirectStoreReadRequest request) {
+	public ExtDirectStoreResponse<LoggingEventDto> load(ExtDirectStoreReadRequest request) {
 
 		Pageable pageRequest = Util.createPageRequest(request, mapGuiColumn2DbField);
 
@@ -61,13 +61,13 @@ public class LoggingEventService {
 			loggingEventList.add(new LoggingEventDto(event));
 		}
 
-		return new ExtDirectStoreResponse<LoggingEventDto>((int) page.getTotalElements(), loggingEventList);
+		return new ExtDirectStoreResponse<>((int) page.getTotalElements(), loggingEventList);
 	}
 
 	@ExtDirectMethod
 	@Transactional
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public void deleteAll(final String level) {
+	public void deleteAll(String level) {
 		if (StringUtils.hasText(level)) {
 			loggingEventRepository.delete(loggingEventRepository.findByLevelString(level));
 		} else {
@@ -88,7 +88,7 @@ public class LoggingEventService {
 
 	@ExtDirectMethod
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public void changeLogLevel(final String levelString) {
+	public void changeLogLevel(String levelString) {
 		LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
 		ch.qos.logback.classic.Logger logger = lc.getLogger("${package}");
 		Level level = Level.toLevel(levelString);

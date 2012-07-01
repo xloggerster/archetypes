@@ -24,7 +24,7 @@ public class TreeLoadService {
 	private SimpleUserDb db;
 
 	@ExtDirectMethod(TREE_LOAD)
-	public ImmutableList<Node> getTree(final String node) {
+	public ImmutableList<Node> getTree(String node) {
 
 		if ("root".equals(node) || !StringUtils.hasText(node)) {
 			Node root = new Node();
@@ -46,11 +46,11 @@ public class TreeLoadService {
 			return ImmutableList.<Node> builder().add(root).build();
 		}
 
-		List<User> users = PropertyOrderingFactory.INSTANCE.createOrdering("lastName").sortedCopy(
+		List<User> users = PropertyOrderingFactory.createOrdering("lastName").sortedCopy(
 				db.findAllFromDepartment(node));
 		return ImmutableList.copyOf(Collections2.transform(users, new Function<User, Node>() {
 			@Override
-			public Node apply(final User input) {
+			public Node apply(User input) {
 				Node n = new Node();
 				n.id = input.getId();
 				n.text = input.getLastName() + " " + input.getFirstName();

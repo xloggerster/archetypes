@@ -6,6 +6,7 @@ Ext.application({
 	controllers: [ 'Users', 'Navigation', 'PollChart', 'LoggingEvents', 'Config' ],
 	autoCreateViewport: true,
 	launch: function() {
+		Ext.fly('appLoadingIndicator').destroy();
 
 //		if (this.hasLocalstorage()) {
 //			Ext.state.Manager.setProvider(Ext.create('Ext.state.LocalStorageProvider'));

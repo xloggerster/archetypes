@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.hssf.usermodel.HSSFClientAnchor;
@@ -52,8 +51,8 @@ public class LoggingEventExport {
 	@Transactional(readOnly = true)
 	@RequestMapping(value = "/loggingEventExport.xls", method = RequestMethod.GET)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public void loggingEventExport(final HttpServletRequest request, final HttpServletResponse response,
-			final Locale locale, @RequestParam(required = false) final String level) throws Exception {
+	public void loggingEventExport(HttpServletResponse response, Locale locale,
+			@RequestParam(required = false) final String level) throws Exception {
 
 		response.setContentType("application/vnd.ms-excel");
 		response.addHeader("Content-disposition", "attachment;filename=logs.xls");
@@ -186,12 +185,12 @@ public class LoggingEventExport {
 		sheet.autoSizeColumn(6);
 		sheet.autoSizeColumn(7);
 
-		OutputStream out = response.getOutputStream();
+		try (OutputStream out = response.getOutputStream()) {
 		workbook.write(out);
-		out.close();
+		}
 	}
 
-	private void createCell(final Row row, final int column, final String value, final CellStyle style) {
+	private static void createCell(Row row, int column, String value, CellStyle style) {
 		Cell cell = row.createCell(column);
 		cell.setCellValue(value);
 		cell.setCellStyle(style);

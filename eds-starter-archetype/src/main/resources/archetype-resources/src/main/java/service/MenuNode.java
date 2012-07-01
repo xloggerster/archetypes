@@ -33,7 +33,7 @@ public class MenuNode {
 		//default constructor
 	}
 
-	public MenuNode(final MenuNode source, final Collection<? extends GrantedAuthority> authorities) {
+	public MenuNode(MenuNode source, Collection<? extends GrantedAuthority> authorities) {
 		this.text = source.getText();
 		this.view = source.getView();
 		this.expanded = source.isExpanded();
@@ -46,7 +46,7 @@ public class MenuNode {
 		}
 	}
 
-	private boolean hasRole(final MenuNode child, final Collection<? extends GrantedAuthority> authorities) {
+	private static boolean hasRole(MenuNode child, Collection<? extends GrantedAuthority> authorities) {
 		if (child.getRoles().isEmpty()) {
 			return true;
 		}
@@ -63,7 +63,7 @@ public class MenuNode {
 		return id;
 	}
 
-	public void setId(final int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -71,7 +71,7 @@ public class MenuNode {
 		return text;
 	}
 
-	public void setText(final String text) {
+	public void setText(String text) {
 		this.text = text;
 	}
 
@@ -79,7 +79,7 @@ public class MenuNode {
 		return view;
 	}
 
-	public void setView(final String view) {
+	public void setView(String view) {
 		this.view = view;
 	}
 
@@ -87,7 +87,7 @@ public class MenuNode {
 		return leaf;
 	}
 
-	public void setLeaf(final boolean leaf) {
+	public void setLeaf(boolean leaf) {
 		this.leaf = leaf;
 	}
 
@@ -95,7 +95,7 @@ public class MenuNode {
 		return children;
 	}
 
-	public void setChildren(final List<MenuNode> children) {
+	public void setChildren(List<MenuNode> children) {
 		this.children = children;
 	}
 
@@ -103,7 +103,7 @@ public class MenuNode {
 		return roles;
 	}
 
-	public void setRoles(final Set<String> roles) {
+	public void setRoles(Set<String> roles) {
 		this.roles = roles;
 	}
 
@@ -111,7 +111,7 @@ public class MenuNode {
 		return expanded;
 	}
 
-	public void setExpanded(final boolean expanded) {
+	public void setExpanded(boolean expanded) {
 		this.expanded = expanded;
 	}
 
@@ -119,7 +119,7 @@ public class MenuNode {
 		return iconCls;
 	}
 
-	public void setIconCls(final String iconCls) {
+	public void setIconCls(String iconCls) {
 		this.iconCls = iconCls;
 	}
 

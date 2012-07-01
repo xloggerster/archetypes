@@ -59,7 +59,7 @@ public class User extends AbstractPersistable<Long> {
 	@JoinTable(name = "AppUserRoles", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
 	private Set<Role> roles;
 
-	public void update(final User modifiedUser) {
+	public void update(User modifiedUser) {
 		this.userName = modifiedUser.getUserName();
 		this.name = modifiedUser.getName();
 		this.firstName = modifiedUser.getFirstName();
@@ -76,7 +76,7 @@ public class User extends AbstractPersistable<Long> {
 		return userName;
 	}
 
-	public void setUserName(final String userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
@@ -84,7 +84,7 @@ public class User extends AbstractPersistable<Long> {
 		return name;
 	}
 
-	public void setName(final String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -92,7 +92,7 @@ public class User extends AbstractPersistable<Long> {
 		return firstName;
 	}
 
-	public void setFirstName(final String firstName) {
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
@@ -100,7 +100,7 @@ public class User extends AbstractPersistable<Long> {
 		return email;
 	}
 
-	public void setEmail(final String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
@@ -108,11 +108,11 @@ public class User extends AbstractPersistable<Long> {
 		return passwordHash;
 	}
 
-	public void setPasswordHash(final String passwordHash) {
+	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = passwordHash;
 	}
 
-	public void setRoles(final Set<Role> roles) {
+	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
 
@@ -124,7 +124,7 @@ public class User extends AbstractPersistable<Long> {
 		return enabled;
 	}
 
-	public void setEnabled(final boolean enabled) {
+	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 
@@ -132,7 +132,7 @@ public class User extends AbstractPersistable<Long> {
 		return locale;
 	}
 
-	public void setLocale(final String locale) {
+	public void setLocale(String locale) {
 		this.locale = locale;
 	}
 
@@ -140,7 +140,7 @@ public class User extends AbstractPersistable<Long> {
 		return createDate;
 	}
 
-	public void setCreateDate(final Date createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
 

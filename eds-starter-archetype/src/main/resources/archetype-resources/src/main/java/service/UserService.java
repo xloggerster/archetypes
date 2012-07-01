@@ -31,6 +31,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ch.ralscha.extdirectspring.annotation.ExtDirectMethod;
+import ch.ralscha.extdirectspring.bean.ExtDirectResponseBuilder;
+import ch.ralscha.extdirectspring.bean.ExtDirectStoreReadRequest;
+import ch.ralscha.extdirectspring.bean.ExtDirectStoreResponse;
+import ch.ralscha.extdirectspring.filter.StringFilter;
 import ${package}.config.JpaUserDetails;
 import ${package}.entity.QUser;
 import ${package}.entity.Role;
@@ -39,11 +44,6 @@ import ${package}.repository.RoleRepository;
 import ${package}.repository.UserCustomRepository;
 import ${package}.repository.UserRepository;
 import ${package}.util.Util;
-import ch.ralscha.extdirectspring.annotation.ExtDirectMethod;
-import ch.ralscha.extdirectspring.bean.ExtDirectResponseBuilder;
-import ch.ralscha.extdirectspring.bean.ExtDirectStoreReadRequest;
-import ch.ralscha.extdirectspring.bean.ExtDirectStoreResponse;
-import ch.ralscha.extdirectspring.filter.StringFilter;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.Sets;
@@ -70,7 +70,7 @@ public class UserService {
 
 	@ExtDirectMethod(STORE_READ)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ExtDirectStoreResponse<User> load(final ExtDirectStoreReadRequest request) {
+	public ExtDirectStoreResponse<User> load(ExtDirectStoreReadRequest request) {
 
 		String filterValue = null;
 		if (!request.getFilters().isEmpty()) {
@@ -79,7 +79,7 @@ public class UserService {
 		}
 
 		Page<User> page = userCustomRepository.findWithFilter(filterValue, Util.createPageRequest(request));
-		return new ExtDirectStoreResponse<User>((int) page.getTotalElements(), page.getContent());
+		return new ExtDirectStoreResponse<>((int) page.getTotalElements(), page.getContent());
 	}
 
 	@ExtDirectMethod(STORE_READ)
@@ -90,7 +90,7 @@ public class UserService {
 
 	@ExtDirectMethod(STORE_MODIFY)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public void destroy(final List<User> destroyUsers) {
+	public void destroy(List<User> destroyUsers) {
 		for (User user : destroyUsers) {
 			userRepository.delete(user);
 		}
@@ -100,7 +100,7 @@ public class UserService {
 	@RequestMapping(value = "/userFormPost", method = RequestMethod.POST)
 	@Transactional
 	@PreAuthorize("isAuthenticated()")
-	public void userFormPost(final HttpServletRequest request, final HttpServletResponse response, final Locale locale,
+	public void userFormPost(HttpServletRequest request, HttpServletResponse response, Locale locale,
 			@RequestParam(required = false, defaultValue = "false") final boolean options,
 			@RequestParam(required = false) final String roleIds,
 			@RequestParam(value = "id", required = false) final Long userId, @Valid final User modifiedUser,

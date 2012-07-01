@@ -75,7 +75,7 @@ public class LoggingEvent {
 		return this.timestmp;
 	}
 
-	public void setTimestmp(final BigDecimal timestmp) {
+	public void setTimestmp(BigDecimal timestmp) {
 		this.timestmp = timestmp;
 	}
 
@@ -83,7 +83,7 @@ public class LoggingEvent {
 		return this.formattedMessage;
 	}
 
-	public void setFormattedMessage(final String formattedMessage) {
+	public void setFormattedMessage(String formattedMessage) {
 		this.formattedMessage = formattedMessage;
 	}
 
@@ -91,7 +91,7 @@ public class LoggingEvent {
 		return this.loggerName;
 	}
 
-	public void setLoggerName(final String loggerName) {
+	public void setLoggerName(String loggerName) {
 		this.loggerName = loggerName;
 	}
 
@@ -99,7 +99,7 @@ public class LoggingEvent {
 		return this.levelString;
 	}
 
-	public void setLevelString(final String levelString) {
+	public void setLevelString(String levelString) {
 		this.levelString = levelString;
 	}
 
@@ -107,7 +107,7 @@ public class LoggingEvent {
 		return this.threadName;
 	}
 
-	public void setThreadName(final String threadName) {
+	public void setThreadName(String threadName) {
 		this.threadName = threadName;
 	}
 
@@ -115,7 +115,7 @@ public class LoggingEvent {
 		return this.referenceFlag;
 	}
 
-	public void setReferenceFlag(final Short referenceFlag) {
+	public void setReferenceFlag(Short referenceFlag) {
 		this.referenceFlag = referenceFlag;
 	}
 
@@ -123,7 +123,7 @@ public class LoggingEvent {
 		return this.arg0;
 	}
 
-	public void setArg0(final String arg0) {
+	public void setArg0(String arg0) {
 		this.arg0 = arg0;
 	}
 
@@ -131,7 +131,7 @@ public class LoggingEvent {
 		return this.arg1;
 	}
 
-	public void setArg1(final String arg1) {
+	public void setArg1(String arg1) {
 		this.arg1 = arg1;
 	}
 
@@ -139,7 +139,7 @@ public class LoggingEvent {
 		return this.arg2;
 	}
 
-	public void setArg2(final String arg2) {
+	public void setArg2(String arg2) {
 		this.arg2 = arg2;
 	}
 
@@ -147,7 +147,7 @@ public class LoggingEvent {
 		return this.arg3;
 	}
 
-	public void setArg3(final String arg3) {
+	public void setArg3(String arg3) {
 		this.arg3 = arg3;
 	}
 
@@ -155,7 +155,7 @@ public class LoggingEvent {
 		return this.callerFilename;
 	}
 
-	public void setCallerFilename(final String callerFilename) {
+	public void setCallerFilename(String callerFilename) {
 		this.callerFilename = callerFilename;
 	}
 
@@ -163,7 +163,7 @@ public class LoggingEvent {
 		return this.callerClass;
 	}
 
-	public void setCallerClass(final String callerClass) {
+	public void setCallerClass(String callerClass) {
 		this.callerClass = callerClass;
 	}
 
@@ -171,7 +171,7 @@ public class LoggingEvent {
 		return this.callerMethod;
 	}
 
-	public void setCallerMethod(final String callerMethod) {
+	public void setCallerMethod(String callerMethod) {
 		this.callerMethod = callerMethod;
 	}
 
@@ -179,7 +179,7 @@ public class LoggingEvent {
 		return this.callerLine;
 	}
 
-	public void setCallerLine(final String callerLine) {
+	public void setCallerLine(String callerLine) {
 		this.callerLine = callerLine;
 	}
 
@@ -187,7 +187,7 @@ public class LoggingEvent {
 		return this.eventId;
 	}
 
-	public void setEventId(final Long eventId) {
+	public void setEventId(Long eventId) {
 		this.eventId = eventId;
 	}
 
@@ -195,7 +195,7 @@ public class LoggingEvent {
 		return this.loggingEventException;
 	}
 
-	public void setLoggingEventException(final Set<LoggingEventException> loggingEventException) {
+	public void setLoggingEventException(Set<LoggingEventException> loggingEventException) {
 		this.loggingEventException = loggingEventException;
 	}
 
@@ -203,7 +203,7 @@ public class LoggingEvent {
 		return this.loggingEventProperty;
 	}
 
-	public void setLoggingEventProperty(final Set<LoggingEventProperty> loggingEventProperty) {
+	public void setLoggingEventProperty(Set<LoggingEventProperty> loggingEventProperty) {
 		this.loggingEventProperty = loggingEventProperty;
 	}
 
