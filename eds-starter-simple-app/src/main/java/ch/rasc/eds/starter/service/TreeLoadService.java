@@ -46,8 +46,8 @@ public class TreeLoadService {
 			return ImmutableList.<Node> builder().add(root).build();
 		}
 
-		List<User> users = PropertyOrderingFactory.createOrdering("lastName").sortedCopy(
-				db.findAllFromDepartment(node));
+		List<User> users = PropertyOrderingFactory.createOrdering("lastName")
+				.sortedCopy(db.findAllFromDepartment(node));
 		return ImmutableList.copyOf(Collections2.transform(users, new Function<User, Node>() {
 			@Override
 			public Node apply(User input) {
