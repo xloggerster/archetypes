@@ -8,7 +8,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.joda.time.DateTime;
 
 import ${package}.entity.LoggingEvent;
@@ -16,6 +15,7 @@ import ${package}.entity.LoggingEventException;
 import ${package}.entity.LoggingEventProperty;
 import ${package}.util.DateTimeSerializer;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.common.collect.Lists;
 
 public class LoggingEventDto {
