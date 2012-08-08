@@ -39,9 +39,13 @@ Ext.define('Starter.view.FormPanel', {
 				name: 'availableProcessors',
 				fieldLabel: 'Available Processors'
 			}, {
+				xtype: 'datefield',
+				name: 'date',
+				fieldLabel: 'Date'
+			}, {
 				xtype: 'filefield',
 				name: 'screenshot',
-				fieldLabel: 'Screenshot',
+				fieldLabel: 'Screenshot'
 			}, {
 				xtype: 'textareafield',
 				name: 'remarks',

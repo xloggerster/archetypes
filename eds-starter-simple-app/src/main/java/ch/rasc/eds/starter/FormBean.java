@@ -1,5 +1,7 @@
 package ch.rasc.eds.starter;
 
+import java.util.Date;
+
 public class FormBean {
 
 	private String osName;
@@ -9,6 +11,8 @@ public class FormBean {
 	private int availableProcessors;
 
 	private String remarks;
+
+	private Date date;
 
 	public String getOsName() {
 		return osName;
@@ -42,10 +46,18 @@ public class FormBean {
 		this.remarks = remarks;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	@Override
 	public String toString() {
 		return "FormBean [osName=" + osName + ", osVersion=" + osVersion + ", availableProcessors="
-				+ availableProcessors + ", remarks=" + remarks + "]";
+				+ availableProcessors + ", remarks=" + remarks + ", date=" + date + "]";
 	}
 
 }
