@@ -16,13 +16,26 @@
 		<slf4j.version>1.7.0</slf4j.version>
 		<logback.version>1.0.7</logback.version>
 
-		<eds.version>1.2.0</eds.version>
+		<eds.version>1.2.1-SNAPSHOT</eds.version>
 		<guava.version>13.0.1</guava.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.debug>true</maven.compiler.debug>
 	</properties>
 
+	<!-- TODO: REMOVE this before release of eds 1.2.1 -->
+	<repositories>
+		<repository>
+			<id>sonatype</id>
+			<name>sonatype</name>
+			<url>https://oss.sonatype.org/content/groups/public</url>
+			<snapshots>
+			</snapshots>
+			<releases>
+			</releases>
+		</repository>
+	</repositories>
+	
 	<dependencies>
 
 		<dependency>
