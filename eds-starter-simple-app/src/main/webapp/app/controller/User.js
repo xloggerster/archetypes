@@ -25,7 +25,10 @@ Ext.define('Starter.controller.User', {
 				click: this.newUser
 			},
 			'storepanel #filtertextfield': {
-				change: this.onChange,
+				change: { 
+					fn: this.onChange,
+					buffer: 350
+				}
 			}
 		});
 	},
