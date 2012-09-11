@@ -13,7 +13,7 @@ Ext.define('Starter.view.FormPanel', {
 		Ext.applyIf(config, {
 			api: {
 				load: formLoadService.getFormData,
-				submit: formSubmitController.handleFormSubmit
+				submit: formSubmitService.handleFormSubmit
 			},
 			paramsAsHash: true
 		});

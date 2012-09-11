@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import ch.ralscha.extdirectspring.annotation.ExtDirectMethod;
 import ch.ralscha.extdirectspring.bean.ExtDirectStoreReadRequest;
-import ch.ralscha.extdirectspring.bean.ExtDirectStoreResponse;
+import ch.ralscha.extdirectspring.bean.ExtDirectStoreReadResult;
 import ch.ralscha.extdirectspring.filter.StringFilter;
 import ${package}.SimpleUserDb;
 import ${package}.User;
@@ -28,7 +28,7 @@ public class StoreService {
 	private SimpleUserDb db;
 
 	@ExtDirectMethod(STORE_READ)
-	public ExtDirectStoreResponse<User> read(ExtDirectStoreReadRequest storeRequest) {
+	public ExtDirectStoreReadResult<User> read(ExtDirectStoreReadRequest storeRequest) {
 
 		String filterValue = null;
 		if (!storeRequest.getFilters().isEmpty()) {
@@ -49,7 +49,7 @@ public class StoreService {
 					Math.min(totalSize, storeRequest.getStart() + storeRequest.getLimit()));
 		}
 
-		return new ExtDirectStoreResponse<>(totalSize, users);
+		return new ExtDirectStoreReadResult<>(totalSize, users);
 	}
 
 	@ExtDirectMethod(STORE_MODIFY)
