@@ -20,7 +20,7 @@
 		<slf4j.version>1.7.0</slf4j.version>
 		<logback.version>1.0.7</logback.version>
 
-		<eds.version>1.2.0</eds.version>
+		<eds.version>1.2.1-SNAPSHOT</eds.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.debug>true</maven.compiler.debug>
@@ -29,6 +29,20 @@
 		<build.timestamp>${maven.build.timestamp}</build.timestamp>
 		<extjs.version>4.1.1</extjs.version>
 	</properties>
+
+	<!-- TODO: REMOVE this before release of eds 1.2.1 -->
+	<repositories>
+		<repository>
+			<id>sonatype</id>
+			<name>sonatype</name>
+			<url>https://oss.sonatype.org/content/groups/public</url>
+			<snapshots>
+			</snapshots>
+			<releases>
+			</releases>
+		</repository>
+	</repositories>
+
 
 	<dependencies>
 
@@ -478,6 +492,35 @@
 
 		</plugins>
 
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-antrun-plugin</artifactId>
+										<versionRange>[1.7,)</versionRange>
+										<goals>
+											<goal>run</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 </project>
