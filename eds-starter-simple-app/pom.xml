@@ -23,7 +23,7 @@
 		<maven.compiler.debug>true</maven.compiler.debug>
 	</properties>
 	
-	<!-- TODO: REMOVE this before release -->
+	<!-- TODO: REMOVE this before release of eds 1.2.1 -->
 	<repositories>
 		<repository>
 			<id>sonatype</id>
