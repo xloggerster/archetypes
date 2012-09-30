@@ -22,19 +22,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.debug>true</maven.compiler.debug>
 	</properties>
-
-	<!-- TODO: REMOVE this before release of eds 1.2.1 -->
-	<repositories>
-		<repository>
-			<id>sonatype</id>
-			<name>sonatype</name>
-			<url>https://oss.sonatype.org/content/groups/public</url>
-			<snapshots>
-			</snapshots>
-			<releases>
-			</releases>
-		</repository>
-	</repositories>
 	
 	<dependencies>
 
