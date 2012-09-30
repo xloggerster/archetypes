@@ -29,11 +29,11 @@ Ext.define('Starter.view.FormPanel', {
 				xtype: 'textfield',
 				name: 'osName',
 				fieldLabel: 'OS Name',
-				allowBlank: false,
+				allowBlank: false
 			}, {
 				xtype: 'textfield',
 				name: 'osVersion',
-				fieldLabel: 'OS Version',
+				fieldLabel: 'OS Version'
 			}, {
 				xtype: 'numberfield',
 				name: 'availableProcessors',
