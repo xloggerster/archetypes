@@ -7,7 +7,7 @@ import org.jasypt.digest.StringDigester;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -18,8 +18,8 @@ import com.google.common.collect.Maps;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = { "ch.rasc.springjpa" })
-@ImportResource("classpath:ch/rasc/springjpa/config/data.xml")
+@EnableJpaRepositories(basePackageClasses = ch.rasc.springjpa.repository.UserRepository.class)
+@ComponentScan(basePackages = "ch.rasc.springjpa")
 public class DataConfig {
 
 	@Bean
