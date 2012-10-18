@@ -22,7 +22,7 @@ import com.google.common.collect.Maps;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages = { "${package}" })
-@ImportResource("classpath:${packageInPathFormat}/config/data.xml")
+@EnableJpaRepositories(basePackageClasses = ${package}.repository.UserRepository.class)
 public class DataConfig {
 
 	@Bean
