@@ -9,7 +9,7 @@
 
 	<groupId>ch.rasc</groupId>
 	<artifactId>springjpa-archetype</artifactId>
-	<version>1.0.6</version>
+	<version>1.0.7</version>
 	<packaging>maven-archetype</packaging>
 
 	<name>springjpa-archetype</name>

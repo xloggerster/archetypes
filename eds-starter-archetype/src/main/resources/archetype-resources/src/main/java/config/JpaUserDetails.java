@@ -34,7 +34,10 @@ public class JpaUserDetails implements UserDetails {
 
 	private Locale locale;
 
+	private Long userId;
+
 	public JpaUserDetails(User user) {
+		this.userId = user.getId();
 		this.password = user.getPasswordHash();
 		this.username = user.getUserName();
 		this.enabled = user.isEnabled();
@@ -67,6 +70,10 @@ public class JpaUserDetails implements UserDetails {
 	@Override
 	public String getUsername() {
 		return username;
+	}
+
+	public Long getUserId() {
+		return userId;
 	}
 
 	public String getFullName() {

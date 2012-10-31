@@ -21,8 +21,8 @@ import com.google.common.collect.Maps;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = { "${package}" })
 @EnableJpaRepositories(basePackageClasses = ${package}.repository.UserRepository.class)
+@ComponentScan(basePackages = "${package}")
 public class DataConfig {
 
 	@Bean

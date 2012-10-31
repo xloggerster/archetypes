@@ -12,7 +12,7 @@
 	<properties>
 		<spring.version>3.1.2.RELEASE</spring.version>
 		<hibernate.version>4.1.7.Final</hibernate.version>
-		<querydsl.version>2.8.0</querydsl.version>
+		<querydsl.version>2.8.1</querydsl.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.debug>true</maven.compiler.debug>
