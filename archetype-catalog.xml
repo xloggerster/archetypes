@@ -5,7 +5,7 @@
       <groupId>ch.rasc</groupId>
       <artifactId>springjpa-archetype</artifactId>
       <version>1.0.7</version>
-      <repository>http://rasc.ch/archetypes</repository>
+      <repository>http://repository.rasc.ch</repository>
       <description>Spring 3.1.2, JPA2, Spring-Data-Jpa, QueryDSL, Hibernate 4</description>
     </archetype>
 	
@@ -13,7 +13,7 @@
       <groupId>ch.rasc</groupId>
       <artifactId>springmvc-archetype</artifactId>
       <version>1.0.7</version>
-      <repository>http://rasc.ch/archetypes</repository>
+      <repository>http://repository.rasc.ch</repository>
       <description>Simple Webapp with Spring MVC 3.1.2 and Spring Security</description>
     </archetype>	
 	
@@ -21,7 +21,7 @@
       <groupId>ch.rasc</groupId>
       <artifactId>webappsimple-archetype</artifactId>
       <version>1.0.7</version>
-      <repository>http://rasc.ch/archetypes</repository>
+      <repository>http://repository.rasc.ch</repository>
       <description>Simple Webapplication with Servlet 3.0/JSP 2.2</description>
     </archetype>		
 	
@@ -29,7 +29,7 @@
       <groupId>ch.rasc</groupId>
       <artifactId>webapp-archetype</artifactId>
       <version>1.0.7</version>
-      <repository>http://rasc.ch/archetypes</repository>
+      <repository>http://repository.rasc.ch</repository>
       <description>Webapp with Spring 3.1.2, Spring Security, JPA2, Spring-Data-Jpa, QueryDSL, Hibernate 4</description>
     </archetype>	
 
@@ -37,7 +37,7 @@
       <groupId>ch.rasc</groupId>
       <artifactId>eds-starter-simple-archetype</artifactId>
       <version>1.0.7</version>
-      <repository>http://rasc.ch/archetypes</repository>
+      <repository>http://repository.rasc.ch</repository>
       <description>Simple Webapp with Ext JS 4.1, ExtDirectSpring 1.2.1 and Spring 3.1.2</description>
     </archetype>
 	
@@ -45,7 +45,7 @@
       <groupId>ch.rasc</groupId>
       <artifactId>eds-starter-archetype</artifactId>
       <version>1.0.7</version>
-      <repository>http://rasc.ch/archetypes</repository>
+      <repository>http://repository.rasc.ch</repository>
       <description>Webapp with Ext JS 4.1, ExtDirectSpring 1.2.1, Spring 3.1.2, Spring Security, JPA2, Spring-Data-Jpa, QueryDSL, Hibernate 4</description>
     </archetype>		
 
