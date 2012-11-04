@@ -57,7 +57,7 @@
 	<distributionManagement>
 		<repository>
 			<id>localwww</id>
-			<url>file:/var/www/archetypes</url>
+			<url>file:/var/repository</url>
 		</repository>
 	</distributionManagement>
 
