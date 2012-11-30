@@ -10,6 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @ComponentScan(basePackages = { "ch.ralscha.extdirectspring", "${package}" })
 @PropertySource({ "version.properties" })
+@EnableAspectJAutoProxy
 public class ComponentConfig {
 	//nothing here
 }

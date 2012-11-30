@@ -38,7 +38,6 @@ public class MdcFilter implements Filter {
 		}
 
 		MDC.put("ip", request.getRemoteAddr());
-		
 		try {
 		  chain.doFilter(request, response);
 		} finally {
