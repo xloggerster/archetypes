@@ -9,7 +9,6 @@ Ext.define('Starter.controller.Form', {
 	} ],
 
 	init: function() {
-
 		this.control({
 			'#formPanel button[action=form_load]': {
 				click: this.load
