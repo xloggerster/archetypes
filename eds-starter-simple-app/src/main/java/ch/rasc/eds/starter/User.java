@@ -2,16 +2,30 @@ package ch.rasc.eds.starter;
 
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
+
+import ch.ralscha.extdirectspring.generator.Model;
+import ch.ralscha.extdirectspring.generator.ModelField;
+
+@Model(value = "Starter.model.User", paging = true, createMethod = "storeService.create", readMethod = "storeService.read", updateMethod = "storeService.update", destroyMethod = "storeService.destroy")
 public class User {
 
 	private String id;
 
+	@ModelField(convert = "null")
 	private String firstName;
 
+	@NotNull
+	@ModelField(convert = "null")
 	private String lastName;
 
+	@Email
+	@ModelField(convert = "null")
 	private String email;
 
+	@ModelField(convert = "null")
 	private String department;
 
 	public User() {

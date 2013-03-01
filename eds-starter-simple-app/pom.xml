@@ -109,6 +109,12 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
+		
+		<dependency>
+			<artifactId>hibernate-validator</artifactId>
+			<groupId>org.hibernate</groupId>
+			<version>4.3.1.Final</version>		
+		</dependency>
 
 	</dependencies>
 
@@ -170,6 +176,61 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.2</version>
+			</plugin>
+
+	     	<plugin>
+	            <groupId>com.googlecode.jslint4java</groupId>
+	            <artifactId>jslint4java-maven-plugin</artifactId>
+	            <version>2.0.3</version>
+	            <executions>
+	                <execution>
+	                    <id>lint</id>
+	                    <phase>process-resources</phase>
+	                    <goals>
+	                        <goal>lint</goal>
+	                    </goals>
+	                    <configuration>
+	                        <failOnError>false</failOnError>
+	                        <sourceFolders>
+	                            <sourceFolder>${project.basedir}/src/main/webapp</sourceFolder>	                            
+	                        </sourceFolders>
+	                        
+	                        <options>
+	                            <browser>true</browser>
+	                            <sloppy>true</sloppy>
+	                            <white>true</white>
+	                            <vars>true</vars>
+	                            <undef>true</undef>
+	                            <plusplus>true</plusplus>
+	                            <predef>Ext,Deft</predef>
+	                        </options>
+	                    </configuration>
+	                </execution>
+	            </executions>
+	        </plugin>	
+
+
+			<plugin>
+			  <groupId>com.mysema.maven</groupId>
+			  <artifactId>apt-maven-plugin</artifactId>
+			  <version>1.0.8</version>
+			  <executions>					
+			    <execution>
+			      <id>modelgen</id>
+			      <goals>
+			        <goal>process</goal>
+			      </goals>
+			      <configuration>
+			        <processor>ch.ralscha.extdirectspring.generator.ModelAnnotationProcessor</processor>
+			        <outputDirectory>src/main/webapp/app</outputDirectory>
+			        <options>
+			          <debug>true</debug>
+			          <outputFormat>extjs4</outputFormat>
+			          <includeValidation>builtin</includeValidation>
+			        </options>
+			      </configuration>
+			    </execution>					
+			  </executions>			
 			</plugin>
 
 			<plugin>
