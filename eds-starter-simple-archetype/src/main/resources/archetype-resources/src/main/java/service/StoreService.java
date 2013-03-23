@@ -7,6 +7,7 @@ import static ch.ralscha.extdirectspring.annotation.ExtDirectMethodType.STORE_MO
 import static ch.ralscha.extdirectspring.annotation.ExtDirectMethodType.STORE_READ;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,7 @@ public class StoreService {
 
 	@ExtDirectMethod(STORE_MODIFY)
 	public User create(User newUser) {
+		newUser.setId(UUID.randomUUID().toString());
 		db.update(newUser);
 		return newUser;
 	}

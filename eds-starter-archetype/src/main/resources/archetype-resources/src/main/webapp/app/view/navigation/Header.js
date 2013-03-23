@@ -1,5 +1,4 @@
 Ext.define('E4ds.view.navigation.Header', {
-	alias: 'widget.navigationheader',
 	extend: 'Ext.container.Container',
 	height: 35,
 	layout: {
@@ -10,13 +9,14 @@ Ext.define('E4ds.view.navigation.Header', {
 	initComponent: function() {
 		var me = this;
 		me.items = [ {
-			html: 'eds-starter',
+			html: 'e4ds-template',
 			cls: 'appHeader'
 		}, {
 			xtype: 'tbspacer',
 			flex: 1
 		}, {
 			xtype: 'label',
+			itemId: 'loggedOnLabel',
 			text: '',
 			cls: 'userName',
 			width: 200,
@@ -27,23 +27,27 @@ Ext.define('E4ds.view.navigation.Header', {
 				left: 0
 			}
 		}, {
+			xtype: 'tbspacer',
+			width: 20
+		}, {
 			xtype: 'button',
 			text: i18n.options,
-			iconCls: 'icon-gear',
-			action: 'options',
+			icon: app_context_path + '/resources/images/gear.png',
+			itemId: 'optionButton',
 			margins: {
 				top: 2,
 				right: 0,
 				bottom: 10,
 				left: 0
-			}			
+			},
+			ui: 'default-toolbar'
 		}, {
 			xtype: 'tbspacer',
-			width: 20,
+			width: 20
 		}, {
 			xtype: 'button',
 			text: i18n.logout,
-			iconCls: 'icon-logout',
+			icon: app_context_path + '/resources/images/logout.png',
 			href: 'j_spring_security_logout',
 			hrefTarget: '_self',
 			margins: {
@@ -51,7 +55,8 @@ Ext.define('E4ds.view.navigation.Header', {
 				right: 0,
 				bottom: 10,
 				left: 0
-			}
+			},
+			ui: 'default-toolbar'
 		} ];
 
 		me.callParent(arguments);

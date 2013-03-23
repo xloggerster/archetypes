@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@ComponentScan(basePackages = { "ch.ralscha.extdirectspring", "${package}" })
+@ComponentScan(basePackages = { "ch.ralscha.extdirectspring", "${package}.config", "${package}.schedule",
+		"${package}.security", "${package}.service", "${package}.web" })
 @PropertySource({ "version.properties" })
-//@EnableAspectJAutoProxy
 public class ComponentConfig {
-	//nothing here
+	// nothing here
 }

@@ -5,13 +5,14 @@ package ${package}.service;
 
 import static ch.ralscha.extdirectspring.annotation.ExtDirectMethodType.STORE_READ;
 
+import java.util.Collections;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,11 +26,12 @@ import ch.ralscha.extdirectspring.bean.ExtDirectStoreReadResult;
 import ch.ralscha.extdirectspring.filter.StringFilter;
 import ${package}.entity.LoggingEvent;
 import ${package}.entity.QLoggingEvent;
-import ${package}.repository.LoggingEventRepository;
 import ${package}.util.Util;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
+import com.mysema.query.jpa.JPQLQuery;
+import com.mysema.query.jpa.impl.JPAQuery;
 
 @Service
 public class LoggingEventService {
@@ -37,31 +39,34 @@ public class LoggingEventService {
 	private static final ImmutableMap<String, String> mapGuiColumn2DbField = new ImmutableMap.Builder<String, String>()
 			.put("dateTime", "timestmp").put("message", "formattedMessage").put("level", "levelString").build();
 
-	@Autowired
-	private LoggingEventRepository loggingEventRepository;
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	@ExtDirectMethod(STORE_READ)
 	@Transactional(readOnly = true)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ExtDirectStoreReadResult<LoggingEventDto> load(ExtDirectStoreReadRequest request) {
+	public ExtDirectStoreReadResult<${package}.dto.LoggingEvent> read(ExtDirectStoreReadRequest request) {
 
-		Pageable pageRequest = Util.createPageRequest(request, mapGuiColumn2DbField);
+		JPQLQuery query = new JPAQuery(entityManager).from(QLoggingEvent.loggingEvent);
 
-		Page<LoggingEvent> page;
-		if (request.getFilters().isEmpty()) {
-			page = loggingEventRepository.findAll(pageRequest);
-		} else {
+		if (!request.getFilters().isEmpty()) {
 			StringFilter levelFilter = (StringFilter) request.getFilters().iterator().next();
 			String levelValue = levelFilter.getValue();
-			page = loggingEventRepository.findAll(QLoggingEvent.loggingEvent.levelString.eq(levelValue), pageRequest);
+			query.where(QLoggingEvent.loggingEvent.levelString.eq(levelValue));
 		}
 
-		List<LoggingEventDto> loggingEventList = Lists.newArrayList();
-		for (LoggingEvent event : page.getContent()) {
-			loggingEventList.add(new LoggingEventDto(event));
+		Util.addPagingAndSorting(query, request, LoggingEvent.class, QLoggingEvent.loggingEvent, mapGuiColumn2DbField,
+				Collections.<String> emptySet());
+
+		List<LoggingEvent> loggingEvents = query.list(QLoggingEvent.loggingEvent);
+		long total = query.count();
+
+		List<${package}.dto.LoggingEvent> loggingEventList = Lists.newArrayList();
+		for (LoggingEvent event : loggingEvents) {
+			loggingEventList.add(new ${package}.dto.LoggingEvent(event));
 		}
 
-		return new ExtDirectStoreReadResult<>((int) page.getTotalElements(), loggingEventList);
+		return new ExtDirectStoreReadResult<>(total, loggingEventList);
 	}
 
 	@ExtDirectMethod
@@ -69,9 +74,15 @@ public class LoggingEventService {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void deleteAll(String level) {
 		if (StringUtils.hasText(level)) {
-			loggingEventRepository.delete(loggingEventRepository.findByLevelString(level));
+			for (${package}.entity.LoggingEvent le : new JPAQuery(entityManager).from(QLoggingEvent.loggingEvent)
+					.where(QLoggingEvent.loggingEvent.levelString.eq(level)).list(QLoggingEvent.loggingEvent)) {
+				entityManager.remove(le);
+			}
 		} else {
-			loggingEventRepository.delete(loggingEventRepository.findAll());
+			for (${package}.entity.LoggingEvent le : new JPAQuery(entityManager).from(QLoggingEvent.loggingEvent)
+					.list(QLoggingEvent.loggingEvent)) {
+				entityManager.remove(le);
+			}
 		}
 	}
 

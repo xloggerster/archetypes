@@ -1,4 +1,7 @@
 Ext.Loader.setConfig({
-	enabled : true
+	enabled: true,
+	paths: {
+		'E4ds': 'app',
+		'Ext.ux': 'resources/extjs/4.2.0/ux'
+	}
 });
-Ext.Loader.setPath('Ext.ux', 'ux');

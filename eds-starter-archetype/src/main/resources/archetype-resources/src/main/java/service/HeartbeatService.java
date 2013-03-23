@@ -16,6 +16,6 @@ public class HeartbeatService {
 	@ExtDirectMethod(value = POLL, event = "heartbeat")
 	@PreAuthorize("isAuthenticated()")
 	public void heartbeat() {
-		//nothing here
+		// nothing here
 	}
 }

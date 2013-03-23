@@ -1,32 +1,35 @@
-Ext.define('Starter.model.User', {
-	extend: 'Ext.data.Model',
-	requires: [ 'Ext.data.UuidGenerator'],
-	idgen: 'uuid',
-
+Ext.define("Starter.model.User",
+{
+  extend : "Ext.data.Model",
 	fields: [ {
-		name: 'lastName',
-		type: 'string'
+    name : "id",
+    type : "string"
 	}, {
-		name: 'firstName',
-		type: 'string'
+    name : "firstName",
+    type : "string",
+    convert : null
 	}, {
-		name: 'email',
-		type: 'string'
+    name : "lastName",
+    type : "string",
+    convert : null
 	}, {
-		name: 'department',
-		type: 'string'
+    name : "email",
+    type : "string",
+    convert : null
+  }, {
+    name : "department",
+    type : "string",
+    convert : null
 	} ],
-
 	validations: [ {
-		type: 'email',
-		field: 'email'
+    type : "presence",
+    field : "lastName"
 	}, {
-		type: 'presence',
-		field: 'lastName'
+    type : "email",
+    field : "email"
 	} ],
-
 	proxy: {
-		type: 'direct',
+    type : "direct",
 		api: {
 			read: storeService.read,
 			create: storeService.create,
@@ -34,7 +37,7 @@ Ext.define('Starter.model.User', {
 			destroy: storeService.destroy
 		},
 		reader: {
-			root: 'records'
+      root : "records"
 		}
 	}
 });

@@ -6,5 +6,4 @@ Ext.define('E4ds.store.Navigation', {
         type: 'direct',
         directFn: navigationService.getNavigation
     }	
-
 });

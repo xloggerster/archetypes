@@ -15,25 +15,25 @@
 			<column name="formatted_message" type="CLOB">
 				<constraints nullable="false" />
 			</column>
-			<column name="logger_name" type="VARCHAR(254)">
+			<column name="logger_name" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
-			<column name="level_string" type="VARCHAR(254)">
+			<column name="level_string" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
-			<column name="thread_name" type="VARCHAR(254)" />
+			<column name="thread_name" type="VARCHAR(255)" />
 			<column name="reference_flag" type="SMALLINT" />
-			<column name="arg0" type="VARCHAR(254)" />
-			<column name="arg1" type="VARCHAR(254)" />
-			<column name="arg2" type="VARCHAR(254)" />
-			<column name="arg3" type="VARCHAR(254)" />
-			<column name="caller_filename" type="VARCHAR(254)">
+			<column name="arg0" type="VARCHAR(255)" />
+			<column name="arg1" type="VARCHAR(255)" />
+			<column name="arg2" type="VARCHAR(255)" />
+			<column name="arg3" type="VARCHAR(255)" />
+			<column name="caller_filename" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
-			<column name="caller_class" type="VARCHAR(254)">
+			<column name="caller_class" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
-			<column name="caller_method" type="VARCHAR(254)">
+			<column name="caller_method" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
 			<column name="caller_line" type="CHAR(4)">
@@ -53,7 +53,7 @@
 			<column name="i" type="SMALLINT">
 				<constraints nullable="false" />
 			</column>
-			<column name="trace_line" type="VARCHAR(254)">
+			<column name="trace_line" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
 		</createTable>
@@ -64,7 +64,7 @@
 			<column name="event_id" type="BIGINT">
 				<constraints nullable="false" />
 			</column>
-			<column name="mapped_key" type="VARCHAR(254)">
+			<column name="mapped_key" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
 			<column name="mapped_value" type="VARCHAR(1024)" />
@@ -81,13 +81,13 @@
 
 	<changeSet author="dev" id="6">
 		<addForeignKeyConstraint baseColumnNames="event_id" baseTableName="logging_event_exception" constraintName="FK_log_event_ex_event"
-			deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="event_id"
+			referencedColumnNames="event_id"
 			referencedTableName="logging_event" />
 	</changeSet>
 
 	<changeSet author="dev" id="7">
 		<addForeignKeyConstraint baseColumnNames="event_id" baseTableName="logging_event_property" constraintName="FK_log_event_prop_event"
-			deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="event_id"
+			referencedColumnNames="event_id"
 			referencedTableName="logging_event" />
 	</changeSet>
 
@@ -101,18 +101,18 @@
 				<constraints nullable="false" unique="true" />
 			</column>
 
-			<column name="name" type="varchar(254)" />
-			<column name="firstName" type="varchar(254)" />
+			<column name="name" type="varchar(255)" />
+			<column name="firstName" type="varchar(255)" />
 
-			<column name="email" type="varchar(254)">
-				<constraints nullable="false"  />
+			<column name="email" type="varchar(255)">
+				<constraints nullable="false" unique="true" />
 			</column>
 			
 			<column name="passwordHash" type="varchar(80)" />
 			<column name="locale" type="varchar(8)" />
 			<column name="enabled" type="BOOLEAN" />
-			<column name="createDate" type="DATETIME" />
-
+                        <column name="failedLogins" type="INT" />            
+                        <column name="lockedOut" type="datetime" />
 		</createTable>
 	</changeSet>
 
@@ -158,4 +158,39 @@
 	  </insert>	  
 	</changeSet>
 
+	<changeSet author="dev" id="12">
+		<createTable tableName="AccessLog">
+			<column autoIncrement="true" name="id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="PK_AccessLog" />
+			</column>	
+			
+			<column name="sessionId" type="varchar(100)" />
+			<column name="userName" type="varchar(100)" />
+			<column name="logIn" type="DATETIME" />
+			<column name="logOut" type="DATETIME" />
+			<column name="userAgent" type="varchar(255)" />
+
+		</createTable>
+	</changeSet>	
+	
+	<changeSet author="dev" id="13">
+		<createTable tableName="persistent_logins">
+			<column name="series" type="varchar(64)">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="pk_persistent_logins" />
+			</column>	
+						
+			<column name="username" type="varchar(100)">
+               <constraints nullable="false"/>
+			</column>
+
+			<column name="token" type="varchar(64)">
+               <constraints nullable="false"/>
+			</column>			
+
+			<column name="last_used" type="TIMESTAMP">
+               <constraints nullable="false"/>
+			</column>	
+		</createTable>
+	</changeSet>		
+	
 </databaseChangeLog>

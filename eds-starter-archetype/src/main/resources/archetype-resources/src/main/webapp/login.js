@@ -1,12 +1,27 @@
 Ext.onReady(function() {
 	Ext.QuickTips.init();
 
+	var header = Ext.create('Ext.container.Container', {
+		region: 'north',
+		height: 35,
+		layout: {
+			type: 'hbox',
+			align: 'stretch'
+		},
+
+		items: [ {
+			html: 'e4ds-template',
+			cls: 'appHeader'
+		} ]
+	});
+
 	var login = Ext.create('Ext.form.Panel', {
 		frame: true,
 		title: i18n.login_title,
 		url: 'j_spring_security_check',
-		width: 320,
-		iconCls: 'icon-login',
+		width: 400,
+		padding: 5,
+		icon: app_context_path + '/resources/images/key.png',
 
 		standardSubmit: true,
 
@@ -26,7 +41,7 @@ Ext.onReady(function() {
 			allowBlank: false,
 			listeners: {
 				specialkey: function(field, e) {
-					if (e.getKey() == e.ENTER) {
+					if (e.getKey() === e.ENTER) {
 						submitForm();
 					}
 				}
@@ -38,7 +53,7 @@ Ext.onReady(function() {
 			allowBlank: false,
 			listeners: {
 				specialkey: function(field, e) {
-					if (e.getKey() == e.ENTER) {
+					if (e.getKey() === e.ENTER) {
 						submitForm();
 					}
 				}
@@ -49,7 +64,7 @@ Ext.onReady(function() {
 			xtype: 'checkbox'
 		} ],
 
-		buttons: [ {
+		buttons: [ /* <debug> */{
 			text: i18n.login_withuser,
 			handler: function() {
 				var form = this.up('form').getForm();
@@ -69,7 +84,7 @@ Ext.onReady(function() {
 				});
 				form.submit();
 			}
-		}, {
+		},/* </debug> */{
 			text: i18n.login,
 			handler: function() {
 				submitForm();
@@ -78,31 +93,22 @@ Ext.onReady(function() {
 	});
 
 	Ext.create('Ext.container.Viewport', {
-		layout: 'border',
 		renderTo: Ext.getBody(),
 
-		items: [ {
-			region: 'north',
-			html: 'eds-starter',
-			cls: 'appHeader',
-			height: 35,
-			margins: {
-				top: 6,
-				right: 0,
-				bottom: 0,
-				left: 6
-			}
-		}, {
-			xtype: 'container',
-			region: 'center',
-			style: 'background-color: white',
+		layout: {
+			type: 'border',
+			padding: 5
+		},
+
+		items: [ header, Ext.create('Ext.Container', {
 			layout: {
 				type: 'vbox',
 				align: 'center',
 				pack: 'center'
 			},
+			region: 'center',
 			items: login
-		} ]
+		}) ]
 	});
 
 	function submitForm() {

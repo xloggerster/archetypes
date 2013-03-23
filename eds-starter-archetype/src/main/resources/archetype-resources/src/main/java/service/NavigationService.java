@@ -61,7 +61,7 @@ public class NavigationService {
 
 		Set<MenuNode> removeChildren = Sets.newHashSet();
 		for (MenuNode child : parent.getChildren()) {
-			//Remove child if it has no children and it's not a leaf
+			// Remove child if it has no children and it's not a leaf
 			if (child.getView() == null && child.getChildren().isEmpty()) {
 				removeChildren.add(child);
 			} else {

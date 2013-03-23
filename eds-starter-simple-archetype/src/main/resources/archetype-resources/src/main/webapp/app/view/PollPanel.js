@@ -29,8 +29,7 @@ Ext.define('Starter.view.PollPanel', {
 					label: {
 						display: 'insideEnd',
 						field: 'hit',
-						color: '#333',
-						'text-anchor': 'middle'
+						color: '#333'
 					},
 					xField: 'month',
 					yField: 'hit'

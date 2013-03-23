@@ -11,6 +11,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.MDC;
 import org.springframework.security.core.Authentication;
@@ -20,12 +21,12 @@ public class MdcFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig config) {
-		//no action
+		// no action
 	}
 
 	@Override
 	public void destroy() {
-		//no action
+		// no action
 	}
 
 	@Override
@@ -38,8 +39,10 @@ public class MdcFilter implements Filter {
 		}
 
 		MDC.put("ip", request.getRemoteAddr());
+		MDC.put("userAgent", ((HttpServletRequest) request).getHeader("User-Agent"));
+
 		try {
-		  chain.doFilter(request, response);
+			chain.doFilter(request, response);
 		} finally {
 			MDC.remove("userName");
 			MDC.remove("ip");

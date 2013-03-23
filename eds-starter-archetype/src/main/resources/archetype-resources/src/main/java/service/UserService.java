@@ -7,20 +7,20 @@ import static ch.ralscha.extdirectspring.annotation.ExtDirectMethodType.FORM_POS
 import static ch.ralscha.extdirectspring.annotation.ExtDirectMethodType.STORE_MODIFY;
 import static ch.ralscha.extdirectspring.annotation.ExtDirectMethodType.STORE_READ;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -32,63 +32,63 @@ import ch.ralscha.extdirectspring.bean.ExtDirectFormPostResult;
 import ch.ralscha.extdirectspring.bean.ExtDirectStoreReadRequest;
 import ch.ralscha.extdirectspring.bean.ExtDirectStoreReadResult;
 import ch.ralscha.extdirectspring.filter.StringFilter;
-import ${package}.config.JpaUserDetails;
+import ${package}.entity.QRole;
 import ${package}.entity.QUser;
 import ${package}.entity.Role;
 import ${package}.entity.User;
-import ${package}.repository.RoleRepository;
-import ${package}.repository.UserCustomRepository;
-import ${package}.repository.UserRepository;
+import ${package}.security.JpaUserDetails;
 import ${package}.util.Util;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.Sets;
 import com.mysema.query.BooleanBuilder;
+import com.mysema.query.jpa.JPQLQuery;
+import com.mysema.query.jpa.impl.JPAQuery;
 
 @Service
 @Lazy
 public class UserService {
 
 	@Autowired
-	private UserRepository userRepository;
-
-	@Autowired
-	private RoleRepository roleRepository;
-
-	@Autowired
-	private UserCustomRepository userCustomRepository;
-
-	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 	@Autowired
 	private MessageSource messageSource;
+	
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	@ExtDirectMethod(STORE_READ)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ExtDirectStoreReadResult<User> load(ExtDirectStoreReadRequest request) {
+	@Transactional(readOnly = true)
+	public ExtDirectStoreReadResult<User> read(ExtDirectStoreReadRequest request) {
 
-		String filterValue = null;
+		JPQLQuery query = new JPAQuery(entityManager).from(QUser.user);
 		if (!request.getFilters().isEmpty()) {
 			StringFilter filter = (StringFilter) request.getFilters().iterator().next();
-			filterValue = filter.getValue();
+
+			BooleanBuilder bb = new BooleanBuilder();
+			bb.or(QUser.user.userName.contains(filter.getValue()));
+			bb.or(QUser.user.name.contains(filter.getValue()));
+			bb.or(QUser.user.firstName.contains(filter.getValue()));
+			bb.or(QUser.user.email.contains(filter.getValue()));
+
+			query.where(bb);
 		}
 
-		Page<User> page = userCustomRepository.findWithFilter(filterValue, Util.createPageRequest(request));
-		return new ExtDirectStoreReadResult<>((int) page.getTotalElements(), page.getContent());
-	}
+		Util.addPagingAndSorting(query, request, User.class, QUser.user);
+		List<User> users = query.list(QUser.user);
+		long total = query.count();
 
-	@ExtDirectMethod(STORE_READ)
-	@PreAuthorize("isAuthenticated()")
-	public List<Role> loadAllRoles() {
-		return roleRepository.findAll();
+		return new ExtDirectStoreReadResult<>(total, users);
 	}
 
 	@ExtDirectMethod(STORE_MODIFY)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public void destroy(List<User> destroyUsers) {
-		for (User user : destroyUsers) {
-			userRepository.delete(user);
+	@Transactional
+	public void destroy(User destroyUser) {
+		if (!isLastAdmin(destroyUser)) {
+			entityManager.remove(entityManager.find(User.class, destroyUser.getId()));
 		}
 	}
 
@@ -97,8 +97,8 @@ public class UserService {
 	@PreAuthorize("isAuthenticated()")
 	public ExtDirectFormPostResult userFormPost(Locale locale,
 			@RequestParam(required = false, defaultValue = "false") final boolean options,
-			@RequestParam(required = false) final String roleIds,
-			@RequestParam(value = "id", required = false) final Long userId, @Valid final User modifiedUser,
+			@RequestParam(value = "id", required = false) final Long userId,
+			@RequestParam(required = false) final String roleIds, @Valid final User modifiedUser,
 			final BindingResult bindingResult) {
 
 		// Check uniqueness of userName and email
@@ -108,7 +108,7 @@ public class UserService {
 				if (userId != null) {
 					bb.and(QUser.user.id.ne(userId));
 				}
-				if (userRepository.count(bb) > 0) {
+				if (new JPAQuery(entityManager).from(QUser.user).where(bb).exists()) {
 					bindingResult.rejectValue("userName", null,
 							messageSource.getMessage("user_usernametaken", null, locale));
 				}
@@ -120,11 +120,11 @@ public class UserService {
 			} else if (options) {
 				Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 				if (principal instanceof JpaUserDetails) {
-					bb.and(QUser.user.userName.ne(((JpaUserDetails) principal).getUsername()));
+					bb.and(QUser.user.id.ne(((JpaUserDetails) principal).getUserDbId()));
 				}
 			}
 
-			if (userRepository.count(bb) > 0) {
+			if (new JPAQuery(entityManager).from(QUser.user).where(bb).exists()) {
 				bindingResult.rejectValue("email", null, messageSource.getMessage("user_emailtaken", null, locale));
 			}
 		}
@@ -132,7 +132,7 @@ public class UserService {
 		if (!bindingResult.hasErrors()) {
 
 			if (StringUtils.hasText(modifiedUser.getPasswordHash())) {
-				modifiedUser.setPasswordHash(passwordEncoder.encodePassword(modifiedUser.getPasswordHash(), null));
+				modifiedUser.setPasswordHash(passwordEncoder.encode(modifiedUser.getPasswordHash()));
 			}
 
 			if (!options) {
@@ -140,28 +140,46 @@ public class UserService {
 				if (StringUtils.hasText(roleIds)) {
 					Iterable<String> roleIdsIt = Splitter.on(",").split(roleIds);
 					for (String roleId : roleIdsIt) {
-						roles.add(roleRepository.findOne(Long.valueOf(roleId)));
+						roles.add(entityManager.find(Role.class, Long.valueOf(roleId)));
 					}
 				}
 
 				if (userId != null) {
-					User dbUser = userRepository.findOne(userId);
+					User dbUser = entityManager.find(User.class, userId);
 					if (dbUser != null) {
 						dbUser.getRoles().clear();
 						dbUser.getRoles().addAll(roles);
-						dbUser.update(modifiedUser, false);
+
+						dbUser.setEnabled(modifiedUser.isEnabled());
+						dbUser.setName(modifiedUser.getName());
+						dbUser.setFirstName(modifiedUser.getFirstName());
+						dbUser.setEmail(modifiedUser.getEmail());
+						dbUser.setLocale(modifiedUser.getLocale());
+
+						if (StringUtils.hasText(modifiedUser.getPasswordHash())) {
+							dbUser.setPasswordHash(modifiedUser.getPasswordHash());
+						}
 					}
 				} else {
-					modifiedUser.setCreateDate(new Date());
 					modifiedUser.setRoles(roles);
-					userRepository.save(modifiedUser);
+					entityManager.persist(modifiedUser);
 				}
 			} else {
 				Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 				if (principal instanceof JpaUserDetails) {
-					User dbUser = userRepository.findByUserName(((JpaUserDetails) principal).getUsername());
+					User dbUser = entityManager.find(User.class, ((JpaUserDetails) principal).getUserDbId());
 					if (dbUser != null) {
-						dbUser.update(modifiedUser, true);
+						dbUser.setName(modifiedUser.getName());
+						dbUser.setFirstName(modifiedUser.getFirstName());
+						dbUser.setEmail(modifiedUser.getEmail());
+						dbUser.setLocale(modifiedUser.getLocale());
+						if (StringUtils.hasText(modifiedUser.getPasswordHash())) {
+							if (passwordEncoder.matches(modifiedUser.getOldPassword(), dbUser.getPasswordHash())) {
+								dbUser.setPasswordHash(modifiedUser.getPasswordHash());
+							} else {
+								bindingResult.rejectValue("oldPassword", null, messageSource.getMessage("user_wrongpassword", null, locale));
+							}
+						}
 					}
 				}
 			}
@@ -173,11 +191,26 @@ public class UserService {
 	@ExtDirectMethod
 	@PreAuthorize("isAuthenticated()")
 	@Transactional(readOnly = true)
-	public User getLoggedOnUserObject() {
+	public User getLoggedOnUser() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (principal instanceof JpaUserDetails) {
-			return userRepository.findByUserName(((JpaUserDetails) principal).getUsername());
+			return entityManager.find(User.class, ((JpaUserDetails) principal).getUserDbId());
 		}
 		return null;
 	}
+
+	private boolean isLastAdmin(User user) {
+		Role role = new JPAQuery(entityManager).from(QRole.role).where(QRole.role.name.eq("ROLE_ADMIN"))
+				.singleResult(QRole.role);
+		JPQLQuery query = new JPAQuery(entityManager).from(QUser.user);
+		query.where(QUser.user.ne(user).and(QUser.user.roles.contains(role)));
+		return query.notExists();
+	}
+
+	@ExtDirectMethod(STORE_READ)
+	@PreAuthorize("isAuthenticated()")
+	public List<Role> readRoles() {
+		return new JPAQuery(entityManager).from(QRole.role).orderBy(QRole.role.name.asc()).list(QRole.role);
+	}
+
 }
