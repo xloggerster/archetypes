@@ -249,7 +249,7 @@
 			<groupId>resources</groupId>
 			<artifactId>extjs-debug</artifactId>
 			<version>${extjs.version}</version>
-			<scope>provided</scope>
+			<!-- <scope>provided</scope>  -->
 		</dependency>
 
 		<dependency>
