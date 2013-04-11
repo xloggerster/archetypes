@@ -26,7 +26,6 @@ import ch.ralscha.extdirectspring.util.JsonHandler;
 import ${package}.web.AppLocaleResolver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 import com.google.common.collect.ImmutableMap;
 
 @Configuration
@@ -68,16 +67,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		config.setExceptionToMessage(new ImmutableMap.Builder<Class<?>, String>().put(AccessDeniedException.class,
 				"accessdenied").build());
 		return config;
-	}
-
-	@Bean
-	public JsonHandler jsonHandler() {
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.registerModule(new Hibernate4Module());
-
-		JsonHandler jsonHandler = new JsonHandler();
-		jsonHandler.setMapper(mapper);
-		return jsonHandler;
 	}
 
 	@Bean
