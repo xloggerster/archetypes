@@ -175,7 +175,7 @@
 	     	<plugin>
 	            <groupId>com.googlecode.jslint4java</groupId>
 	            <artifactId>jslint4java-maven-plugin</artifactId>
-	            <version>2.0.3</version>
+	            <version>2.0.5</version>
 	            <executions>
 	                <execution>
 	                    <id>lint</id>
@@ -194,9 +194,9 @@
 	                            <sloppy>true</sloppy>
 	                            <white>true</white>
 	                            <vars>true</vars>
-	                            <undef>true</undef>
+	                            <unparam>true</unparam>                            
 	                            <plusplus>true</plusplus>
-	                            <predef>Ext,Deft</predef>
+	                            <predef>Ext,Deft,formLoadService,formSubmitService,pollService,storeService,treeLoadService</predef>
 	                        </options>
 	                    </configuration>
 	                </execution>
