@@ -94,10 +94,13 @@ public class AccessLog extends AbstractPersistable {
 	}
 
 	public String getBrowser() {
+		if (userAgent != null) {
 		UserAgentStringParser parser = UADetectorServiceFactory.getResourceModuleParser();
 		UserAgent agent = parser.parse(userAgent);
 		return agent.getName() + " " + agent.getVersionNumber().getMajor() + " ("
 				+ agent.getOperatingSystem().getName() + ")";
+	}
+		return "";
 	}
 
 	public String getDuration() {

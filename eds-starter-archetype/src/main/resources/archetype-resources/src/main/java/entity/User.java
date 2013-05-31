@@ -48,7 +48,7 @@ public class User extends AbstractPersistable {
 	@Column(unique = true)
 	private String email;
 
-	@Size(max = 60)
+	@Size(max = 80)
 	private String passwordHash;
 
 	@Transient

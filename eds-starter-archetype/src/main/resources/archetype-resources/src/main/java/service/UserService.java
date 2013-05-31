@@ -150,6 +150,7 @@ public class UserService {
 						dbUser.getRoles().clear();
 						dbUser.getRoles().addAll(roles);
 
+						dbUser.setUserName(modifiedUser.getUserName());
 						dbUser.setEnabled(modifiedUser.isEnabled());
 						dbUser.setName(modifiedUser.getName());
 						dbUser.setFirstName(modifiedUser.getFirstName());
@@ -177,7 +178,8 @@ public class UserService {
 							if (passwordEncoder.matches(modifiedUser.getOldPassword(), dbUser.getPasswordHash())) {
 								dbUser.setPasswordHash(modifiedUser.getPasswordHash());
 							} else {
-								bindingResult.rejectValue("oldPassword", null, messageSource.getMessage("user_wrongpassword", null, locale));
+								bindingResult.rejectValue("oldPassword", null,
+										messageSource.getMessage("user_wrongpassword", null, locale));
 							}
 						}
 					}

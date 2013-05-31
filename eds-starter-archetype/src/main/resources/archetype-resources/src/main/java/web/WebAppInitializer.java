@@ -29,7 +29,6 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.context.support.GenericWebApplicationContext;
-import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -129,7 +128,6 @@ public class WebAppInitializer implements WebApplicationInitializer {
 					if (mode.contains("s")) {
 						htmlCodes.get(varName).append(createHtmlCode(container, l, varName));
 					} else {
-						System.out.println("READ: " + l);
 						try (InputStream lis = container.getResourceAsStream(l)) {
 							String sourcecode = CharStreams.toString(CharStreams.newReaderSupplier(
 									createInputSupplier(lis), Charsets.UTF_8));
