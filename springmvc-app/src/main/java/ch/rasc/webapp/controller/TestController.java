@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestController {
 
 	@RequestMapping("/doSomething")
-	//@PreAuthorize("hasRole('ROLE_ADMIN')")
+	// @PreAuthorize("hasRole('ROLE_ADMIN')")
 	public Map<String, Object> doSomething() {
 		Map<String, Object> response = new HashMap<>();
 
