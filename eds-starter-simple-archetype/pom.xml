@@ -8,7 +8,7 @@
   
   <groupId>ch.rasc</groupId>
   <artifactId>eds-starter-simple-archetype</artifactId>
-  <version>1.0.11</version>
+  <version>1.0.12</version>
   <packaging>maven-archetype</packaging>
 
   <name>eds-starter-simple-archetype</name>
@@ -46,7 +46,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-site-plugin</artifactId>
-					<version>3.2</version>
+					<version>3.3</version>
 				</plugin>
       </plugins>
     </pluginManagement>

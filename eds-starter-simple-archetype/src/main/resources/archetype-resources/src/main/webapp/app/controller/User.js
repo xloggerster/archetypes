@@ -36,9 +36,7 @@ Ext.define('Starter.controller.User', {
 	onChange: function(field, newValue) {
 		var myStore = this.getUsersStore();
 		if (newValue) {
-		    myStore.remoteFilter = false;
 			myStore.clearFilter(true);
-			myStore.remoteFilter = true;
 			myStore.filter('filter', newValue);
 		} else {
 			myStore.clearFilter();

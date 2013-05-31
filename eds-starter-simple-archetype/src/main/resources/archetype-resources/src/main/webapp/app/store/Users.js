@@ -4,6 +4,7 @@ Ext.define('Starter.store.Users', {
 	autoLoad: true,
 	pageSize: 25,
 	remoteSort: true,
+	remoteFilter: true,
 	autoSync: true,
 	sorters: [ {
 		property: 'lastName',
